@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--==================== UNICONS ====================-->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+
+    <!--==================== SWIPER CSS ====================-->
+    <link rel="stylesheet" href="./packages/css/swiper-bundle.min.css">
+
+    <!--==================== CSS ====================-->
+    <link rel="stylesheet" href="./packages/css/styles.css">
+
+    <title>Surafel</title>
+    <script src="./packages/js/lottieAssetRunScript.js"></script>
+
+</head>
+
+<body>
+    <!--==================== HEADER ====================-->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="#" class="nav__logo">Surafel Zewdu</a>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list grid">
+                    <li class="nav__item">
+                        <a href="#home" class="nav__link">
+                            <i class="uil uil-estate nav__icon"></i>Home
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#about" class="nav__link">
+                            <i class="uil uil-user nav__icon"></i>About
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#skills" class="nav__link">
+                            <i class="uil uil-file-alt nav__icon"></i>Skills
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#services" class="nav__link">
+                            <i class="uil uil-briefcase-alt nav__icon"></i>Services
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#portfolio" class="nav__link">
+                            <i class="uil uil-scenery nav__icon"></i>Portfolio
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#contact" class="nav__link">
+                            <i class="uil uil-message nav__icon"></i>Contact
+                        </a>
+                    </li>
+                </ul>
+                <i class="uil uil-times nav__close" id="nav-close"></i>
+            </div>
+            <div class="nav__btns">
+                <!-- Theme change button -->
+
+                <i class="uil uil-moon change-theme" id="theme-button"></i>
+
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class="uil uil-apps"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!--==================== MAIN ====================-->
+    <main class="main">
+        <!--==================== HOME ====================-->
+        <section class="home section" id="home">
+            <div class="home__container container grid">
+                <div class="home__content grid">
+
+                    <div class="home__social">
+                        <a href="https://t.me/Zufan47" target="_blank" class="footer__social">
+                            <i class="uil uil-telegram"></i>
+                        </a>
+                        <a href="tel:+251965651110" target="_blank" class="footer__social">
+                            <i class="uil uil-phone"></i>
+                        </a>
+                        <a href="https://github.com/surafel-47" target="_blank" class="footer__social">
+                            <i class="uil uil-github"></i>
+                        </a>
+                    </div>
+
+                    <div class="home__img">
+                        <svg class="home__blob" viewBox="0 0 200 187" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <mask id="mask0" mask-type="alpha">
+                                <path fill="#313131" d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 165.547 
+                                    130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 129.362C2.45775 
+                                    97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 -0.149132 97.9666 
+                                    0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z" />
+                            </mask>
+                            <g mask="url(#mask0)">
+                                <path fill="#313131" d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 
+                                    165.547 130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 
+                                    129.362C2.45775 97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 
+                                    -0.149132 97.9666 0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z" />
+                                    <image class="home__blob-img" x="0" y="-50px" width="250px" height="250px" xlink:href="./packages/images/pic.png" />
+                                </g>
+                        </svg>
+                    </div>
+                    
+                    
+
+                    <div class="home__data">
+                        <h1 class="home__title">Hi, I'm Surafel</h1>
+                        <h3 class="home__subtitle">Programmer and App Developer</h3>
+                        <p class="home__description">I'm a 4th year CS student from <b>HiLCoE</b> School of Computer
+                            Science and Freelance developer</p>
+                        <a href="#contact" class="button button--flex home__button">
+                            Contact Me<i class="uil uil-message button__icon"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="home__scroll">
+                    <a href="#about" class="home__scroll-button button--flex">
+                        <i class="uil uil-mouse-alt home__scroll-mouse"></i>
+                        <span class="home__scroll-name">Scroll Down</span>
+                        <i class="uil uil-arrow-down home__scroll-arrow"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!--==================== ABOUT ====================-->
+        <section class="about section" id="about">
+            <h2 class="section__title">About Me</h2>
+            <span class="section__subtitle">My Introduction</span>
+
+            <div class="about__container container grid">
+
+                <div class="myLottieAnimationDiv" style="max-width: 300px;"></div>
+
+                <script>
+                    // Initialize the Lottie animation
+                    var animation = lottie.loadAnimation({
+                        container: document.querySelector(".myLottieAnimationDiv"), // Specify the container element
+                        renderer: "svg", // Choose the renderer (SVG, Canvas, HTML)
+                        loop: true, // Set whether the animation should loop
+                        autoplay: true, // Set whether the animation should play automatically
+                        path: "./packages/robot.json", // Specify the path to your Lottie JSON file
+                    });
+
+
+                    document.addEventListener("DOMContentLoaded", function () {
+                        const textElement = document.querySelector(".aboutMeSection p");
+                        const text = " I'm a 4th year Computer Science Student at HiLCoE College, Addis Ababa. My experience includes a grasp of both front and back-end development (full-stack). In-terms of Front-End, i Mainly focus on Flutter and Cross-Platform development. For back-end development, I'm well experienced with  ASP.NET and Entity Framework, Php and Additionally, my experience extends to Node.js(Express)  and MongoDB, complemented by a solid understanding of Relational Database concepts. ";
+                        let index = 0;
+
+                        function typeWriter() {
+                            if (index < text.length) {
+                                textElement.innerHTML += text.charAt(index);
+                                index++;
+                                setTimeout(typeWriter, Math.random() * 30); // Adjust typing speed here
+                            }
+                        }
+                        typeWriter();
+                    });
+
+
+                </script>
+                <div class="about__data">
+                    <section class="aboutMeSection" id="aboutMeSection" style="min-height: 270px;">
+                        <p>
+                            <span><b> Hi, &lt;/About Me &#62; </b></span>
+                            <br />
+                            &nbsp &nbsp
+                        </p>
+                    </section>
+                    <div class="about__info">
+                        <div>
+                            <span class="about__info-title">+3</span>
+                            <span class="about__info-name">Years <br> experience</span>
+                        </div>
+                        <div>
+                            <span class="about__info-title">+3</span>
+                            <span class="about__info-name">Completed <br> certifications</span>
+                        </div>
+                        <div>
+                            <span class="about__info-title">+3</span>
+                            <span class="about__info-name">companies<br>worked</span>
+                        </div>
+                    </div>
+
+                    <div class="about__buttons">
+                        <a download="" href="./packages/Surafel Zewdu F.pdf" class="button button--flex">
+                            Download My CV<i class="uil uil-download-alt button__icon"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--==================== SKILLS ====================-->
+        <section class="skills section" id="skills">
+            <h2 class="section__title">My Skills</h2>
+            <span class="section__subtitle">My technical experstise in different Frameworks</span>
+
+            <div class="skills__container container grid">
+                <div>
+                    <!--==================== SKILL-1 ====================-->
+                    <div class="skills__content skills__open">
+                        <div class="skills__header">
+                            <img src="./packages/flutter.svg" style="width: 27px;" />
+                            <div style="width: 15px;"></div>
+                            <div>
+                                <h1 class="skills__title">Flutter</h1>
+                                <span class="skills__subtitle">More than 3 years</span>
+                            </div>
+
+                            <i class="uil uil-angle-down skills__arrow"></i>
+                        </div>
+                        <div class="skills__list grid">
+                            <ul>
+                                <li>🟢 Cross-Platform Development</li>
+                                <li>🟢 State Management</li>
+                                <li>🟢 Package Management</li>
+                                <li>🟢 UI/UX Design</li>
+                                <li>🟢 Responsive Layouts</li>
+                                <li>🟢 Rest API intgration</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--==================== SKILLS 2 ====================-->
+                    <div class="skills__content skills__close">
+                        <div class="skills__header">
+                            <i class="fab fa-node-js skills__icon"></i>
+                            <div>
+                                <h1 class="skills__title">Node.js(Express) and MongoDB</h1>
+                                <span class="skills__subtitle">More than 2 years</span>
+                            </div>
+
+                            <i class="uil uil-angle-down skills__arrow"></i>
+                        </div>
+                        <div class="skills__list grid">
+                            <ul>
+                                <li>🟢 Cross-Platform Development</li>
+                                <li>🟢 State Management</li>
+                                <li>🟢 Package Management</li>
+                                <li>🟢 UI/UX Design</li>
+                                <li>🟢 Responsive Layouts</li>
+                                <li>🟢 Rest API intgration</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <!--==================== SKILLS 3 ====================-->
+                    <div class="skills__content skills__close">
+                        <div class="skills__header">
+                            <i class="fas fa-code skills__icon"></i>
+                            <div>
+                                <h1 class="skills__title">HTML5, CSS3, JS(ES6)</h1>
+                                <span class="skills__subtitle">More than 5 years</span>
+                            </div>
+
+                            <i class="uil uil-angle-down skills__arrow"></i>
+                        </div>
+                        <div class="skills__list grid">
+                            <ul>
+                                <li>🟢 Structured documents using HTML</li>
+                                <li>🟢 DOM real-time manipulation</li>
+                                <li>🟢 Event handling responsive UIs</li>
+                                <li>🟢 Responsive design with media queries</li>
+                                <li>🟢 CSS animations and transitions</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <!--==================== SKILLS 4 ====================-->
+                    <div class="skills__content skills__close">
+                        <div class="skills__header">
+                            <i class="uil uil-brackets-curly skills__icon"></i>
+                            <div>
+                                <h1 class="skills__title">ASP.NET MVC</h1>
+                                <span class="skills__subtitle">More than 3 years</span>
+                            </div>
+
+                            <i class="uil uil-angle-down skills__arrow"></i>
+                        </div>
+                        <div class="skills__list grid">
+                            <ul>
+                                <li>🟢 MVC (Model-View-Controller) Architecture</li>
+                                <li>🟢 Entity Framework</li>
+                                <li>🟢 Views and Razor Syntax</li>
+                                <li>🟢 ASP.NET Core's middleware pipelining</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <!--==================== SKILLS 5 ====================-->
+                    <div class="skills__content skills__close">
+                        <div class="skills__header">
+                            <i class="fas fa-database skills__icon"></i>
+                            <div>
+                                <h1 class="skills__title">Database (SQL Server, MySQL)</h1>
+                                <span class="skills__subtitle">More than 3 years</span>
+                            </div>
+
+                            <i class="uil uil-angle-down skills__arrow"></i>
+                        </div>
+                        <div class="skills__list grid">
+                            <ul>
+                                <li>🟢 SQL (Structured Query Language)</li>
+                                <li>🟢 Relationships(1:1)(1:M)(N:M)</li>
+                                <li>🟢 Triggers and Procedures</li>
+                                <li>🟢 Design normalized database schemas</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <!--==================== SKILLS 6 ====================-->
+                    <div class="skills__content skills__close">
+                        <div class="skills__header">
+                            <i class="uil uil-react skills__icon"></i>
+                            <div>
+                                <h1 class="skills__title">React</h1>
+                                <span class="skills__subtitle">Few Months Experience</span>
+                            </div>
+
+                            <i class="uil uil-angle-down skills__arrow"></i>
+                        </div>
+                        <div class="skills__list grid">
+                            <ul>
+                                <li>🟢 Bginner level familariarity</li>
+                                <li>🟢 Working with React components</li>
+                                <li>🟢 JSX Syntax</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <!--==================== SKILLS 7 ====================-->
+                    <div class="skills__content skills__close">
+                        <div class="skills__header">
+                            <i class="fas fa-code skills__icon"></i>
+                            <div>
+                                <h1 class="skills__title">Java and C#</h1>
+                                <span class="skills__subtitle">More than 3 years</span>
+                            </div>
+
+                            <i class="uil uil-angle-down skills__arrow"></i>
+                        </div>
+                        <div class="skills__list grid">
+                            <ul>
+                                <li>🟢 Winform and Java JFrame Windows appliation development</li>
+                                <li>🟢 Encapsulation, and Abstraction.</li>
+                                <li>🟢 Inheritance and Polymorphism</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--==================== QUALIFICATION ====================-->
+        <section class="qualification__section">
+            <h2 class="section__title">Qualification</h2>
+            <span class="section__subtitle">My personal journey</span>
+
+            <div class="qualification__container container">
+                <div class="qualification__tabs">
+                    <div class="qualification__button button--flex qualification__active" data-target='#education'>
+                        <i class="uil uil-graduation-cap qualification__icon"></i>
+                        Education
+                    </div>
+
+                    <div class="qualification__button button--flex" data-target="#work">
+                        <i class="uil uil-briefcase-alt qualification__icon"></i>
+                        Work
+                    </div>
+                </div>
+
+                <div class="qualification__sections">
+                    <!--==================== QUALIFICATION CONTENT 1 ====================-->
+                    <div class="qualification__content qualification__active" data-content id="education">
+                        <!--==================== QUALIFICATION 1 ====================-->
+                        <div class="qualification__data">
+                            <div>
+                                <h3 class="qualification__title"> Comp Sci Degree</h3>
+                                <span class="qualification__subtitle"><b>HiLCoE College</b>, Addis Abeba</span>
+                                <div class="qualification__calendar">
+                                    <i class="uil uil-calendar-alt"></i>
+                                    2021 - Present
+                                </div>
+                            </div>
+
+                            <div>
+                                <span class="qualification__rounder"></span>
+                                <span class="qualification__line"></span>
+                            </div>
+                        </div>
+
+                        <!--==================== QUALIFICATION 2 ====================-->
+                        <div class="qualification__data">
+                            <div></div>
+                            <div>
+                                <span class="qualification__rounder"></span>
+                                <span class="qualification__line"></span>
+                            </div>
+
+                            <div>
+                                <h3 class="qualification__title">Mereja Tech</h3>
+                                <span class="qualification__subtitle">Front-End Team for Developing Mobile
+                                    Application</span>
+                                <div class="qualification__calendar">
+                                    <i class="uil uil-calendar-alt"></i>
+                                    2023 - 2024
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--==================== QUALIFICATION 3 ====================-->
+                        <div class="qualification__data">
+                            <div>
+                                <h3 class="qualification__title">Microsoft Azure Fundamental</h3>
+                                <span class="qualification__subtitle">Currently Enrolled in Microsoft Azure Fundamentals
+                                    in Collaboration with Sponsors from Wollo Univerity</span>
+                                <div class="qualification__calendar">
+                                    <i class="uil uil-calendar-alt"></i>
+                                    2024 - Present
+                                </div>
+                            </div>
+
+                            <div>
+                                <span class="qualification__rounder"></span>
+                                <span class="qualification__line"></span>
+                            </div>
+                        </div>
+
+                        <!--==================== QUALIFICATION 4 ====================-->
+                        <div class="qualification__data">
+                            <div></div>
+                            <div>
+                                <span class="qualification__rounder"></span>
+                                <!-- <span class="qualification__line"></span> -->
+                            </div>
+
+                            <div>
+                                <h3 class="qualification__title">Crooze Company Front-End Developer</h3>
+                                <span class="qualification__subtitle">Crooze Company, worked on a Mobile Application
+                                    with Backend Integration for Crooze Shared Ride School Kids App</span>
+                                <div class="qualification__calendar">
+                                    <i class="uil uil-calendar-alt"></i>
+                                    2024
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <!--==================== QUALIFICATION CONTENT 2 ====================-->
+                    <div class="qualification__content" data-content id="work">
+                        <!--==================== QUALIFICATION 1 ====================-->
+                        <div class="qualification__data">
+                            <div>
+                                <h3 class="qualification__title">Trainee Banking Assistant</h3>
+                                <span class="qualification__subtitle">DFCC Head Office - Colombo</span>
+                                <div class="qualification__calendar">
+                                    <i class="uil uil-calendar-alt"></i>
+                                    2017 - 2019
+                                </div>
+                            </div>
+
+                            <div>
+                                <span class="qualification__rounder"></span>
+                                <span class="qualification__line"></span>
+                            </div>
+                        </div>
+
+                        <!--==================== QUALIFICATION 2 ====================-->
+                        <div class="qualification__data">
+                            <div></div>
+                            <div>
+                                <span class="qualification__rounder"></span>
+                                <span class="qualification__line"></span>
+                            </div>
+
+                            <div>
+                                <h3 class="qualification__title">Banking Assistant</h3>
+                                <span class="qualification__subtitle">DFCC Head Office - Colombo</span>
+                                <div class="qualification__calendar">
+                                    <i class="uil uil-calendar-alt"></i>
+                                    2019 - 2020
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--==================== QUALIFICATION 3 ====================-->
+                        <div class="qualification__data">
+                            <div>
+                                <h3 class="qualification__title">Data Analyst - Digital banking</h3>
+                                <span class="qualification__subtitle">DFCC Head Office - Colombo</span>
+                                <div class="qualification__calendar">
+                                    <i class="uil uil-calendar-alt"></i>
+                                    2020 - Present
+                                </div>
+                            </div>
+
+                            <div>
+                                <span class="qualification__rounder"></span>
+                                <!-- <span class="qualification__line"></span> -->
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!--==================== CONTACT ME ====================-->
+
+        <style>
+            .contact-container {
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
+            }
+
+            .contact-item {
+                text-align: center;
+                margin-bottom: 20px;
+                width: 270px;
+                background-color: rgba(0, 0, 0, 0.273);
+                padding: 15px;
+                border-radius: 20px;
+                transition: 0.2s;
+            }
+
+            .contact-item:hover {
+                transform: scale(1.06);
+                background-color: rgba(0, 0, 0, 0.489);
+
+            }
+
+            .contact-item img {
+                width: 80px;
+                height: 80px;
+                margin-bottom: 10px;
+            }
+
+            .contact-item a {
+                color: wheat;
+                display: block;
+            }
+
+            @media (max-width: 768px) {
+                .contact-item {
+                    width: 150px;
+                }
+            }
+        </style>
+
+        <section class="contact section" id="contact">
+            <h2 class="section__title">Contact me</h2>
+            <span class="section__subtitle">Get in touch</span>
+        </section>
+        <div class="contact-container">
+            <div class="contact-item">
+                <img src="./packages/telegram.svg" alt="Phone Icon">
+                <a href="https://t.me/Zufan47">@Zufan47</a>
+            </div>
+            <div class="contact-item">
+                <img src="./packages/gmail.svg" alt="Phone Icon">
+                <a href="mailto:surafelzewdu2018@gmail.com" target="_blank">surafelzewdu2018@gmail.com </a>
+            </div>
+            <div class="contact-item">
+                <img src="./packages/phone.svg" alt="Phone Icon">
+                <a href="tel:+251965651110">+251-965651110</a>
+            </div>
+            <div class="contact-item">
+                <img src="./packages/githubNavBar.png" alt="Phone Icon">
+                <a href="https://github.com/surafel-47" target="_blank">@surafel-47</a>
+            </div>
+        </div>
+    </main>
+
+
+    <!--==================== PORTFOLIO ====================-->
+    <section class="portfolio section" id="portfolio">
+
+        <h2 class="section__title">Portfolio</h2>
+        <span class="section__subtitle">Most recent works</span>
+
+    </section>
+
+    <div style="margin-left: 10%; border-radius: 25px; border: 1px solid black; width: 80%; padding:15px">
+        <iframe class="responsive-iframe" src="./Projects/ASP/ASP.html" width="100%" frameborder="0" height="700px""></iframe>
+    </div>
+  
+
+  
+
+        <!--==================== PROJECT IN MIND ====================-->
+        <section class="project section">
+
+            <div class="project__bg">
+                <div class="project__container container grid">
+                    <div class="project__data">
+                        <h2 class="project__title">You have a new project?</h2>
+                        <p class="project__description">Contact me now and we can talk about more about it.</p>
+                        <a href="#contact" class="button button--flex button--white">Contact me
+                            <i class="uil uil-message project__icon button__icon"></i>
+                        </a>
+                    </div>
+                    <!-- <img src="assets/img/project.png" alt="" class="project__img"> -->
+                </div>
+            </div>
+
+        </section>
+
+
+
+
+
+            <!--==================== FOOTER ====================-->
+            <footer class=" footer">
+
+            <div class="footer__bg">
+                <div class="footer__container container grid">
+                    <div>
+                        <h1 class="footer__title">Surafel</h1>
+                        <span class="footer__subtitle">Programmer | App Developer</span>
+                    </div>
+
+                    <ul class="footer__links">
+                        <li>
+                            <a href="#aboutMeSection" class="footer__link">About</a>
+                        </li>
+                        <li>
+                            <a href="#portfolio" class="footer__link">Portfolio</a>
+                        </li>
+                        <li>
+                            <a href="#contact" class="footer__link">Contact</a>
+                        </li>
+                    </ul>
+
+                    <div class="footer__socials">
+                        <a href="https://t.me/Zufan47" target="_blank" class="footer__social">
+                            <i class="uil uil-telegram"></i>
+                        </a>
+                        <a href="tel:+251965651110" target="_blank" class="footer__social">
+                            <i class="uil uil-phone"></i>
+                        </a>
+                        <a href="https://github.com/surafel-47" target="_blank" class="footer__social">
+                            <i class="uil uil-github"></i>
+                        </a>
+                    </div>
+                </div>
+                <p class="footer__copy">&#169; surafel-47. All rights reserved.</p>
+            </div>
+            </footer>
+
+            <!--==================== SCROLL TOP ====================-->
+            <a href="#" class="scrollup" id="scroll-up">
+                <i class="uil uil-arrow-up scrollup__icon"></i>
+            </a>
+
+
+            <!--==================== SWIPER JS ====================-->
+            <script src="./packages/js/swiper-bundle.min.js"></script>
+
+            <!--==================== MAIN JS ====================-->
+            <script src="./packages/js/main.js"></script>
+</body>
+
+</html>
