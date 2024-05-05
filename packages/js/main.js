@@ -174,8 +174,9 @@ function scrollUp() {
 }
 window.addEventListener("scroll", scrollUp);
 
-/*==================== DARK LIGHT THEME ====================*/
 
+
+/*==================== DARK LIGHT THEME ====================*/
 const themeButton = document.getElementById("theme-button");
 const darkTheme = "dark-theme";
 const iconTheme = "uil-sun";
@@ -190,18 +191,15 @@ const getCurrentTheme = () =>
 const getCurrentIcon = () =>
   themeButton.classList.contains(iconTheme) ? "uil-moon" : "uil-sun";
 
-// We validate if the user previously chose a topic
 if (selectedTheme) {
-  // If the validation is fulfilled, we ask what the issue was to know if we activated or deactivated the dark
-  document.body.classList[selectedTheme === "dark" ? "add" : "remove"](
+  document.body.classList[selectedTheme === "dark" ? "add" : "add"](
     darkTheme
   );
-  themeButton.classList[selectedIcon === "uil-moon" ? "add" : "remove"](
+  themeButton.classList[selectedIcon === "uil-moon" ? "add" : "add"](
     iconTheme
   );
 }
 
-// Activate / deactivate the theme manually with the button
 themeButton.addEventListener("click", () => {
   // Add or remove the dark / icon theme
   document.body.classList.toggle(darkTheme);
