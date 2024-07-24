@@ -192,6 +192,10 @@ const getCurrentIcon = () =>
   themeButton.classList.contains(iconTheme) ? "uil-moon" : "uil-sun";
 
 if (selectedTheme) {
+<<<<<<< HEAD
+=======
+  // If the validation is fulfilled, we ask what the issue was to know if we activated or deactivated the dark
+>>>>>>> 2fdca4f4756b960ee1c3a24a909bde3f05850405
   document.body.classList[selectedTheme === "dark" ? "add" : "add"](
     darkTheme
   );
