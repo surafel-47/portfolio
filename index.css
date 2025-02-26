@@ -1,0 +1,110 @@
+/* Global Scrollbar Styles */
+::-webkit-scrollbar {
+    width: 8px; /* Set scrollbar width */
+    height: 8px; /* Set scrollbar height */
+}
+
+/* Scrollbar Track (background) */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Light Mode */
+}
+
+::-webkit-scrollbar-track {
+    background: #333; /* Dark Mode */
+}
+
+/* Scrollbar Thumb (the draggable part) */
+::-webkit-scrollbar-thumb {
+    background: #888; /* Light Mode */
+    border-radius: 10px;
+}
+
+/* Scrollbar Thumb Hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Light Mode */
+}
+
+/* Dark Mode Scrollbar Thumb */
+@media (prefers-color-scheme: dark) {
+    ::-webkit-scrollbar-track {
+        background: #444; /* Dark Mode */
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #888; /* Dark Mode */
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555; /* Dark Mode */
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Container for images to scroll horizontally */
+.project-media-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 16px;
+    padding-bottom: 20px;
+}
+
+/* Individual image containers */
+.project-media-item {
+    flex-shrink: 0; /* Prevent images from shrinking */
+}
+
+/* Images inside project media container */
+.project-media-img {
+    max-width: auto; /* Ensure images do not stretch beyond their natural size */
+    max-height: 700px; /* Maintain the aspect ratio of the image */
+    border-radius: 8px;
+    object-fit: contain; /* Ensure that images do not distort */
+}
+
+/* Scrollbar Styles */
+.project-media-container::-webkit-scrollbar {
+    height: 8px; /* Set height for horizontal scrollbar */
+}
+
+.project-media-container::-webkit-scrollbar-thumb {
+    background-color: #888; /* Color for scrollbar thumb */
+    border-radius: 4px;
+}
+
+.project-media-container::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Darker color on hover */
+}
+
+.project-media-container::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Track color */
+}
+
+/* Dark Mode Scrollbar Styles */
+@media (prefers-color-scheme: dark) {
+    .project-media-container::-webkit-scrollbar-thumb {
+        background-color: #555; /* Dark mode scrollbar thumb */
+    }
+
+    .project-media-container::-webkit-scrollbar-thumb:hover {
+        background-color: #222; /* Darker on hover */
+    }
+
+    .project-media-container::-webkit-scrollbar-track {
+        background: #333; /* Dark mode track */
+    }
+}

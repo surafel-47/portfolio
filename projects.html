@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surafel's Projects</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="index.css">
+
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Swiper.js CDN for carousel -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        // Tailwind Configuration
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#60A5FA',
+                    }
+                }
+            }
+        }
+
+        // Dark mode toggle function
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+            localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+        }
+
+        // Initialize dark mode based on localStorage or system preference
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+
+        // Function to show projects based on category
+        function showProjects(category) {
+            document.querySelectorAll('.project-category').forEach(el => el.classList.add('hidden'));
+            document.getElementById(category + '-projects').classList.remove('hidden');
+        }
+
+        // Initialize Swiper carousels when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const swipers = document.querySelectorAll('.swiper');
+            swipers.forEach((swiperEl, index) => {
+                new Swiper(swiperEl, {
+                    loop: true,
+                    pagination: {
+                        el: '.swiper-pagination',
+                    },
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                });
+            });
+        });
+    </script>
+    <script src="projects.js"></script>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+    <!-- Header -->
+    <header class="fixed w-full top-0 bg-white dark:bg-gray-900 shadow-sm z-50">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold">Surafel Zewdu</h1>
+            <div class="flex items-center gap-6">
+                <button onclick="toggleDarkMode()" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:block"></i>
+                </button>
+                <ul class="hidden md:flex space-x-6">
+                    <li><a href="index.html#home" class="hover:text-primary">Home</a></li>
+                    <li><a href="projects.html" class="hover:text-primary">Projects</a></li>
+                    <li><a href="index.html#experience" class="hover:text-primary">Experience</a></li>
+                    <li><a href="index.html#skills" class="hover:text-primary">Skills</a></li>
+                    <li><a href="index.html#contact" class="hover:text-primary">Contact</a></li>
+                </ul>
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-4 py-2 bg-gray-50 dark:bg-gray-800">
+            <ul class="space-y-2">
+                <li><a href="#home" class="block py-2 hover:text-primary">Home</a></li>
+                <li><a href="projects.html" class="block py-2 hover:text-primary">Projects</a></li>
+                <li><a href="#experience" class="block py-2 hover:text-primary">Experience</a></li>
+                <li><a href="#skills" class="block py-2 hover:text-primary">Skills</a></li>
+                <li><a href="#contact" class="block py-2 hover:text-primary">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+
+    <!-- Project Categories -->
+    <section class="pt-24 pb-12 container mx-auto px-4">
+        <h1 class="text-3xl font-bold mb-8 text-center">My Projects</h1>
+        <div class="flex flex-wrap justify-center gap-4 mb-8">
+            <button onclick="showProjects('website')" class="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-full hover:bg-blue-600 transition-colors">
+                <i class="fas fa-globe"></i> Website
+            </button>
+            <button onclick="showProjects('mobile')" class="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-full hover:bg-blue-600 transition-colors">
+                <i class="fas fa-mobile-alt"></i> Mobile
+            </button>
+            <button onclick="showProjects('cpp')" class="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-full hover:bg-blue-600 transition-colors">
+                <i class="fas fa-code"></i> C++
+            </button>
+            <button onclick="showProjects('csharp')" class="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-full hover:bg-blue-600 transition-colors">
+                <i class="fab fa-microsoft"></i> C#
+            </button>
+        </div>
+    </section>
+
+    <!-- Project Lists -->
+    <section class="container mx-auto px-4 pb-12">
+        <!-- Website Projects -->
+        <div id="website-projects" class="project-category">
+            <h2 class="text-2xl font-bold mb-6">Website Projects</h2>
+            <!-- Projects will be dynamically inserted here -->
+        </div>
+    
+        <!-- Mobile Projects -->
+        <div id="mobile-projects" class="project-category hidden">
+            <h2 class="text-2xl font-bold mb-6">Mobile Projects</h2>
+            <!-- Projects will be dynamically inserted here -->
+        </div>
+    
+        <!-- C++ Projects -->
+        <div id="cpp-projects" class="project-category hidden">
+            <h2 class="text-2xl font-bold mb-6">C++ Projects</h2>
+            <!-- Projects will be dynamically inserted here -->
+        </div>
+    
+        <!-- C# Projects -->
+        <div id="csharp-projects" class="project-category hidden">
+            <h2 class="text-2xl font-bold mb-6">C# Projects</h2>
+            <!-- Projects will be dynamically inserted here -->
+        </div>
+    </section>
+    
+<!-- Footer -->
+<footer class="py-6 text-center border-t dark:border-gray-700">
+    <p>&copy; <span id="current-year"></span> Surafel Zewdu. All rights reserved.</p>
+</footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("current-year").textContent = new Date().getFullYear();
+    });
+</script>
+
+    <script>
+        function generateProjectHTML(project) {
+            // Create the HTML structure for each project
+            let projectHTML = `
+                <div class="mb-12 bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold mb-2">${project.title}</h3>
+                    <p class="mb-4 text-gray-600 dark:text-gray-400">${project.description}</p>
+                    <div class="flex gap-4 mb-6">
+                        ${project.githubLink ? `<a href="${project.githubLink}" class="text-primary hover:underline"><i class="fab fa-github mr-2"></i>GitHub Repo</a>` : ''}
+                        ${project.liveLink ? `<a href="${project.liveLink}" class="text-primary hover:underline"><i class="fas fa-external-link-alt mr-2"></i>Live Demo</a>` : ''}
+                    </div>
+                    <div class="project-media-container overflow-x-auto flex gap-4 py-4">
+                        ${project.media.map(media => `
+                            <div class="project-media-item">
+                                <img src="${media}" alt="Project Screenshot" class="project-media-img">
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+            return projectHTML;
+        }
+
+        function loadProjects(category) {
+            const projectContainer = document.getElementById(category + '-projects');
+            projectContainer.innerHTML = ''; // Clear any existing content
+
+            projects[category].forEach(project => {
+                projectContainer.innerHTML += generateProjectHTML(project);
+            });
+        }
+
+        // Load Website projects on page load
+        document.addEventListener("DOMContentLoaded", function() {
+            loadProjects('website');
+            loadProjects('mobile');
+            loadProjects('cpp');
+            loadProjects('csharp');
+        });
+
+    </script>
+</body>
+</html>
