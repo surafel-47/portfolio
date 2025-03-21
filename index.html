@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="index.css">
     <!-- Icons CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
+    <!-- SimpleLightbox CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" rel="stylesheet">
+
     <script>
         // Tailwind Configuration
         tailwind.config = {
@@ -44,19 +48,26 @@
     <!-- Header -->
     <header class="fixed w-full top-0 bg-white dark:bg-gray-900 shadow-sm z-50">
         <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <h1 class="text-xl font-bold">Surafel Zewdu</h1>
-            <div class="flex items-center gap-6">
-                <button onclick="toggleDarkMode()" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
-                    <i class="fas fa-moon dark:hidden"></i>
-                    <i class="fas fa-sun hidden dark:block"></i>
-                </button>
-                <ul class="hidden md:flex space-x-6">
-                    <li><a href="index.html#home" class="hover:text-primary">Home</a></li>
-                    <li><a href="projects.html" class="hover:text-primary">Projects</a></li>
+            <div class="flex gap-8">
+                <h1 class="text-xl font-bold"><a href="index.html#home">Surafel Zewdu</a></h1>
+                <ul class="hidden md:flex space-x-6 pt-1">
                     <li><a href="index.html#experience" class="hover:text-primary">Experience</a></li>
                     <li><a href="index.html#skills" class="hover:text-primary">Skills</a></li>
                     <li><a href="index.html#contact" class="hover:text-primary">Contact</a></li>
                 </ul>
+            </div>
+            <div class="flex items-center gap-6">
+                <ul class="hidden md:flex space-x-6">
+                    <li>
+                        <a href="projects.html" class="inline-block bg-primary text-white px-6 py-2 rounded-full hover:bg-blue-600 transition-colors">
+                          Projects <i class="fas fa-project-diagram ml-2"></i>
+                        </a>
+                      </li>
+                                      </ul>
+                <button onclick="toggleDarkMode()" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:block"></i>
+                </button>
                 <!-- Mobile Menu Button -->
                 <button class="md:hidden" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
                     <i class="fas fa-bars"></i>
@@ -237,6 +248,12 @@
                 
             </div>
         </div>
+        <div class="flex justify-center mt-8">
+            <a href="projects.html" class="inline-block bg-primary text-white px-16 py-2 rounded-full hover:bg-blue-600 transition-colors">
+               Explore More Projects <i class="fas fa-project-diagram ml-2"></i>
+              </a>
+        </div>
+    
     </section>
     
     
@@ -376,11 +393,15 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- Certificate Item -->
             <div class="bg-gray-50 dark:bg-gray-800 rounded-lg overflow-hidden shadow-md">
-                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-GW4mbGVRYYXxa5EVEvxVdSscACBQg2.png" alt="Certificate 1" class="w-full h-48 object-cover cursor-pointer" onclick="openModal('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-GW4mbGVRYYXxa5EVEvxVdSscACBQg2.png', 'Web Development Certification')">
-                <div class="p-4">
-                    <h3 class="text-xl font-semibold mb-2">Web Development Certification</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Issued by: Example Institute</p>
-                    <a href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-GW4mbGVRYYXxa5EVEvxVdSscACBQg2.png" download class="inline-block bg-primary text-white px-4 py-2 rounded-full hover:bg-blue-600 transition-colors">
+                    <!-- Image with Fancybox -->
+                <a href="/assets/cert1.png" data-fancybox="certificates" data-caption="Web Development Certification">
+                    <img src="/assets/cert1.png" alt="Certificate 1" class="w-full h-48 object-cover cursor-pointer">
+                </a>
+                
+                  <div class="p-4">
+                    <h3 class="text-xl font-semibold mb-2">Full Stack - Web Dev Certification</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Issued by: MMCY Tech </p>
+                    <a href="/assets/Surafel Zewdu - Full Stack Web Dev Certificate.pdf" download class="inline-block bg-primary text-white px-4 py-2 rounded-full hover:bg-blue-600 transition-colors">
                         <i class="fas fa-download mr-2"></i>Download
                     </a>
                 </div>
@@ -389,6 +410,7 @@
             <!-- Repeat Certificate Item for more certificates -->
 
         </div>
+
     </section>
 
 
@@ -396,22 +418,26 @@
     <section id="contact" class="py-12 bg-gray-50 dark:bg-gray-800">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold mb-8 text-center">Contact Me</h2>
-            <div class="max-w-md mx-auto grid grid-cols-2 gap-6">
-                <a href="mailto:surafelzewdu2018@gmail.com" class="flex items-center gap-3 hover:text-primary">
+            <div class="max-w-md mx-auto grid sm:grid-cols-2 grid-cols-1 gap-x-20 gap-y-6">
+                <a href="mailto:surafelzewdu2018@gmail.com" target="_blank"  class="flex items-center gap-3 hover:text-primary">
                     <i class="fas fa-envelope text-xl"></i>
-                    <span>surafelzewdu2018@</span>
+                    <span>surafelzewdu2018@gmail.com</span>
                 </a>
-                <a href="https://t.me/Zufan47" class="flex items-center gap-3 hover:text-primary">
+                <a href="https://t.me/Zufan47"target="_blank"   class="flex items-center gap-3 hover:text-primary">
                     <i class="fab fa-telegram text-xl"></i>
                     <span>@Zufan47</span>
                 </a>
-                <a href="tel:+251965651110" class="flex items-center gap-3 hover:text-primary">
+                <a href="tel:+251965651110" target="_blank"  class="flex items-center gap-3 hover:text-primary">
                     <i class="fas fa-phone text-xl"></i>
                     <span>+251965651110</span>
                 </a>
-                <a href="https://github.com/surafel-47" class="flex items-center gap-3 hover:text-primary">
+                <a href="https://github.com/surafel-47" target="_blank"  class="flex items-center gap-3 hover:text-primary">
                     <i class="fab fa-github text-xl"></i>
                     <span>@surafel-47</span>
+                </a>
+                <a href="https://www.linkedin.com/in/surafel-zewdu-0ba88b242/" target="_blank" class="flex items-center gap-3 hover:text-primary">
+                    <i class="fab fa-linkedin text-xl"></i>
+                    <span>Surafel Zewdu</span>
                 </a>
             </div>
         </div>
