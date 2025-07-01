@@ -1,210 +1,1044 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Surafel's Projects</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="index.css">
-
+    <link rel="stylesheet" href="index.css" />
     <!-- Font Awesome CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <!-- Swiper.js CDN for carousel -->
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <style>
+      /* Enhanced animations and effects */
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      @keyframes glow {
+        0%,
+        100% {
+          box-shadow: 0 0 20px rgba(96, 165, 250, 0.3);
+        }
+        50% {
+          box-shadow: 0 0 40px rgba(96, 165, 250, 0.6);
+        }
+      }
+
+      @keyframes slideInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .float-animation {
+        animation: float 4s ease-in-out infinite;
+      }
+      .glow-effect {
+        animation: glow 3s ease-in-out infinite;
+      }
+      .slide-in-up {
+        animation: slideInUp 0.6s ease-out forwards;
+      }
+
+      .gradient-text {
+        background: linear-gradient(135deg, #60a5fa, #a78bfa, #f472b6);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .glass-effect {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .dark .glass-effect {
+        background: rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .hover-lift {
+        transition: all 0.3s ease;
+      }
+
+      .hover-lift:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+      }
+
+      .dark .hover-lift:hover {
+        box-shadow: 0 15px 35px rgba(96, 165, 250, 0.2);
+      }
+
+      .project-card {
+        transition: all 0.4s ease;
+        border-left: 4px solid transparent;
+      }
+
+      .project-card:hover {
+        border-left-color: #60a5fa;
+        transform: translateX(10px);
+      }
+
+      .category-btn {
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .category-btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: left 0.5s;
+      }
+
+      .category-btn:hover::before {
+        left: 100%;
+      }
+
+      .category-btn.active {
+        background: linear-gradient(135deg, #60a5fa, #a78bfa);
+        transform: scale(1.05);
+      }
+
+      .social-icon {
+        transition: all 0.3s ease;
+      }
+
+      .social-icon:hover {
+        transform: scale(1.2) rotate(5deg);
+      }
+
+      .stagger-animation {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: slideInUp 0.6s ease-out forwards;
+      }
+
+      .stagger-animation:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .stagger-animation:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .stagger-animation:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .stagger-animation:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+      .stagger-animation:nth-child(5) {
+        animation-delay: 0.5s;
+      }
+
+      /* Custom Swiper Styles */
+      .project-swiper {
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      .project-swiper .swiper-slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #f8f9fa;
+      }
+
+      .dark .project-swiper .swiper-slide {
+        background: #1f2937;
+      }
+
+      .project-swiper .swiper-slide img {
+        width: 100%;
+        height: 400px;
+        object-fit: contain;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+      }
+
+      .project-swiper .swiper-slide img:hover {
+        transform: scale(1.02);
+      }
+
+      .project-swiper .swiper-button-next,
+      .project-swiper .swiper-button-prev {
+        color: #60a5fa;
+        background: rgba(255, 255, 255, 0.9);
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        margin-top: -22px;
+      }
+
+      .dark .project-swiper .swiper-button-next,
+      .dark .project-swiper .swiper-button-prev {
+        background: rgba(0, 0, 0, 0.7);
+        color: #60a5fa;
+      }
+
+      .project-swiper .swiper-button-next:after,
+      .project-swiper .swiper-button-prev:after {
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      .project-swiper .swiper-pagination-bullet {
+        background: #60a5fa;
+        opacity: 0.5;
+      }
+
+      .project-swiper .swiper-pagination-bullet-active {
+        opacity: 1;
+        background: #60a5fa;
+      }
+
+      /* Full Screen Modal Styles */
+      .fullscreen-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.95);
+        z-index: 9999;
+        display: none;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .fullscreen-modal.active {
+        display: flex;
+      }
+
+      .fullscreen-swiper {
+        width: 90%;
+        height: 90%;
+        max-width: 1200px;
+      }
+
+      .fullscreen-swiper .swiper-slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .fullscreen-swiper .swiper-slide img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        border-radius: 8px;
+      }
+
+      .fullscreen-swiper .swiper-button-next,
+      .fullscreen-swiper .swiper-button-prev {
+        color: white;
+        background: rgba(96, 165, 250, 0.8);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
+
+      .fullscreen-swiper .swiper-button-next:after,
+      .fullscreen-swiper .swiper-button-prev:after {
+        font-size: 20px;
+      }
+
+      .fullscreen-swiper .swiper-pagination-bullet {
+        background: white;
+        opacity: 0.5;
+      }
+
+      .fullscreen-swiper .swiper-pagination-bullet-active {
+        opacity: 1;
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        color: white;
+        font-size: 30px;
+        cursor: pointer;
+        z-index: 10000;
+        background: rgba(96, 165, 250, 0.8);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+      }
+
+      .modal-close:hover {
+        background: rgba(96, 165, 250, 1);
+        transform: scale(1.1);
+      }
+
+      .expand-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: rgba(96, 165, 250, 0.9);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        z-index: 10;
+      }
+
+      .expand-btn:hover {
+        background: rgba(96, 165, 250, 1);
+        transform: scale(1.1);
+      }
+    </style>
+
     <script>
-        // Tailwind Configuration
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#60A5FA',
-                    }
-                }
-            }
-        }
+      // Tailwind Configuration
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#60A5FA",
+              secondary: "#A78BFA",
+              accent: "#F472B6",
+            },
+          },
+        },
+      };
 
-        // Dark mode toggle function
-        function toggleDarkMode() {
-            document.documentElement.classList.toggle('dark');
-            localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-        }
+      // Dark mode toggle function
+      function toggleDarkMode() {
+        document.documentElement.classList.toggle("dark");
+        localStorage.theme = document.documentElement.classList.contains("dark")
+          ? "dark"
+          : "light";
+      }
 
-        // Initialize dark mode based on localStorage or system preference
-        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-        }
+      // Initialize dark mode based on localStorage or system preference
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      }
 
-        // Function to show projects based on category
-        function showProjects(category) {
-            document.querySelectorAll('.project-category').forEach(el => el.classList.add('hidden'));
-            document.getElementById(category + '-projects').classList.remove('hidden');
-        }
-
-        // Initialize Swiper carousels when the page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            const swipers = document.querySelectorAll('.swiper');
-            swipers.forEach((swiperEl, index) => {
-                new Swiper(swiperEl, {
-                    loop: true,
-                    pagination: {
-                        el: '.swiper-pagination',
-                    },
-                    navigation: {
-                        nextEl: '.swiper-button-next',
-                        prevEl: '.swiper-button-prev',
-                    },
-                });
-            });
+      // Enhanced function to show projects based on category
+      function showProjects(category) {
+        // Remove active class from all buttons
+        document.querySelectorAll(".category-btn").forEach((btn) => {
+          btn.classList.remove("active");
         });
+
+        // Add active class to clicked button
+        event.target.classList.add("active");
+
+        // Hide all project categories
+        document.querySelectorAll(".project-category").forEach((el) => {
+          el.classList.add("hidden");
+          el.classList.remove("slide-in-up");
+        });
+
+        // Show selected category with animation
+        const targetCategory = document.getElementById(category + "-projects");
+        targetCategory.classList.remove("hidden");
+        targetCategory.classList.add("slide-in-up");
+
+        // Add stagger animation to project cards
+        setTimeout(() => {
+          targetCategory
+            .querySelectorAll(".project-card")
+            .forEach((card, index) => {
+              card.style.animationDelay = `${index * 0.1}s`;
+              card.classList.add("stagger-animation");
+            });
+        }, 100);
+      }
+
+      // Full screen modal functions
+      function openFullscreen(images, startIndex = 0) {
+        const modal = document.getElementById("fullscreen-modal");
+        const swiperWrapper = modal.querySelector(".swiper-wrapper");
+
+        // Clear existing slides
+        swiperWrapper.innerHTML = "";
+
+        // Add new slides
+        images.forEach((image) => {
+          const slide = document.createElement("div");
+          slide.className = "swiper-slide";
+          slide.innerHTML = `<img src="${image}" alt="Project Screenshot">`;
+          swiperWrapper.appendChild(slide);
+        });
+
+        // Show modal
+        modal.classList.add("active");
+
+        // Initialize or update swiper
+        if (window.fullscreenSwiper) {
+          window.fullscreenSwiper.destroy();
+        }
+
+        window.fullscreenSwiper = new Swiper(".fullscreen-swiper", {
+          loop: images.length > 1,
+          initialSlide: startIndex,
+          navigation: {
+            nextEl: ".fullscreen-swiper .swiper-button-next",
+            prevEl: ".fullscreen-swiper .swiper-button-prev",
+          },
+          pagination: {
+            el: ".fullscreen-swiper .swiper-pagination",
+            clickable: true,
+          },
+          keyboard: {
+            enabled: true,
+          },
+        });
+      }
+
+      function closeFullscreen() {
+        document.getElementById("fullscreen-modal").classList.remove("active");
+      }
+
+      // Close modal on escape key
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closeFullscreen();
+        }
+      });
     </script>
     <script src="projects.js"></script>
-</head>
-<body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200">
-    <!-- Header -->
-    <header class="fixed w-full top-0 bg-white dark:bg-gray-900 shadow-sm z-50">
-        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="flex gap-8">
-                <h1 class="text-xl font-bold"><a href="index.html#home">Surafel Zewdu</a></h1>
-                <ul class="hidden md:flex space-x-6 pt-1">
-                    <li><a href="index.html#experience" class="hover:text-primary">Experience</a></li>
-                    <li><a href="index.html#skills" class="hover:text-primary">Skills</a></li>
-                    <li><a href="index.html#contact" class="hover:text-primary">Contact</a></li>
-                </ul>
-            </div>
-            <div class="flex items-center gap-6">
-                <ul class="hidden md:flex space-x-6">
-                    <li>
-                        <a href="projects.html" class="inline-block bg-primary text-white px-6 py-2 rounded-full hover:bg-blue-600 transition-colors">
-                          Projects <i class="fas fa-project-diagram ml-2"></i>
-                        </a>
-                      </li>
-                                      </ul>
-                <button onclick="toggleDarkMode()" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
-                    <i class="fas fa-moon dark:hidden"></i>
-                    <i class="fas fa-sun hidden dark:block"></i>
-                </button>
-                <!-- Mobile Menu Button -->
-                <button class="md:hidden" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-        </nav>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden px-4 py-2 bg-gray-50 dark:bg-gray-800">
-            <ul class="space-y-2">
-                <li><a href="#home" class="block py-2 hover:text-primary">Home</a></li>
-                <li><a href="projects.html" class="block py-2 hover:text-primary">Projects</a></li>
-                <li><a href="#experience" class="block py-2 hover:text-primary">Experience</a></li>
-                <li><a href="#skills" class="block py-2 hover:text-primary">Skills</a></li>
-                <li><a href="#contact" class="block py-2 hover:text-primary">Contact</a></li>
-            </ul>
+  </head>
+  <body
+    class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-800 dark:text-gray-200"
+  >
+    <!-- Enhanced Header with Glass Effect -->
+    <header
+      class="fixed w-full top-0 glass-effect z-50 border-b border-white/20"
+    >
+      <nav
+        class="container mx-auto px-4 py-4 flex justify-between items-center"
+      >
+        <div class="flex gap-8">
+          <h1 class="text-xl font-bold gradient-text">
+            <a href="index.html#home" class="flex items-center gap-2">
+              <i class="fas fa-code"></i>Surafel Zewdu
+            </a>
+          </h1>
+          <ul class="hidden md:flex space-x-6 pt-1">
+            <li>
+              <a
+                href="index.html#experience"
+                class="hover:text-primary transition-colors flex items-center gap-2"
+              >
+                <i class="fas fa-briefcase"></i>Experience
+              </a>
+            </li>
+            <li>
+              <a
+                href="index.html#skills"
+                class="hover:text-primary transition-colors flex items-center gap-2"
+              >
+                <i class="fas fa-cogs"></i>Skills
+              </a>
+            </li>
+            <li>
+              <a
+                href="index.html#contact"
+                class="hover:text-primary transition-colors flex items-center gap-2"
+              >
+                <i class="fas fa-envelope"></i>Contact
+              </a>
+            </li>
+          </ul>
         </div>
+        <div class="flex items-center gap-6">
+          <ul class="hidden md:flex space-x-6">
+            <li>
+              <a
+                href="projects.html"
+                class="inline-block bg-gradient-to-r from-primary to-secondary text-white px-6 py-2 rounded-full hover:from-secondary hover:to-accent transition-all duration-300 glow-effect"
+              >
+                <i class="fas fa-project-diagram mr-2"></i>Projects
+              </a>
+            </li>
+          </ul>
+          <button
+            onclick="toggleDarkMode()"
+            class="p-2 rounded-lg glass-effect hover:bg-white/20 dark:hover:bg-black/20 transition-all"
+          >
+            <i class="fas fa-moon dark:hidden text-yellow-500"></i>
+            <i class="fas fa-sun hidden dark:block text-yellow-400"></i>
+          </button>
+          <!-- Mobile Menu Button -->
+          <button
+            class="md:hidden glass-effect p-2 rounded-lg"
+            onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </nav>
+      <!-- Enhanced Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden px-4 py-2 glass-effect border-t border-white/20"
+      >
+        <ul class="space-y-2">
+          <li>
+            <a
+              href="index.html#home"
+              class="block py-2 hover:text-primary transition-colors flex items-center gap-2"
+              ><i class="fas fa-home"></i>Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="projects.html"
+              class="block py-2 hover:text-primary transition-colors flex items-center gap-2"
+              ><i class="fas fa-project-diagram"></i>Projects</a
+            >
+          </li>
+          <li>
+            <a
+              href="index.html#experience"
+              class="block py-2 hover:text-primary transition-colors flex items-center gap-2"
+              ><i class="fas fa-briefcase"></i>Experience</a
+            >
+          </li>
+          <li>
+            <a
+              href="index.html#skills"
+              class="block py-2 hover:text-primary transition-colors flex items-center gap-2"
+              ><i class="fas fa-cogs"></i>Skills</a
+            >
+          </li>
+          <li>
+            <a
+              href="index.html#contact"
+              class="block py-2 hover:text-primary transition-colors flex items-center gap-2"
+              ><i class="fas fa-envelope"></i>Contact</a
+            >
+          </li>
+        </ul>
+      </div>
     </header>
 
+    <!-- Enhanced Hero Section -->
+    <section class="pt-32 pb-16 container mx-auto px-4 text-center">
+      <div class="max-w-4xl mx-auto">
+        <h1 class="text-5xl font-bold mb-6 gradient-text float-animation">
+          <i class="fas fa-rocket mr-4"></i>My Projects
+        </h1>
+        <p
+          class="text-xl text-gray-600 dark:text-gray-400 mb-8 leading-relaxed"
+        >
+          Explore my diverse portfolio of web applications, mobile apps, and
+          software solutions. Each project represents a unique challenge solved
+          with creativity and technical expertise.
+        </p>
 
-
-    <!-- Project Categories -->
-    <section class="pt-24 pb-12 container mx-auto px-4">
-        <h1 class="text-3xl font-bold mb-8 text-center">My Projects</h1>
-        <div class="flex flex-wrap justify-center gap-4 mb-8">
-            <button onclick="showProjects('website')" class="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-full hover:bg-blue-600 transition-colors">
-                <i class="fas fa-globe"></i> Website
-            </button>
-            <button onclick="showProjects('mobile')" class="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-full hover:bg-blue-600 transition-colors">
-                <i class="fas fa-mobile-alt"></i> Mobile
-            </button>
-            <button onclick="showProjects('cpp')" class="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-full hover:bg-blue-600 transition-colors">
-                <i class="fas fa-code"></i> HTML/JS Games
-            </button>
-            <button onclick="showProjects('csharp')" class="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-full hover:bg-blue-600 transition-colors">
-                <i class="fab fa-microsoft"></i> C#
-            </button>
+        <!-- Enhanced Stats -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+          <div class="glass-effect p-6 rounded-xl hover-lift">
+            <div class="text-3xl font-bold gradient-text mb-2">15+</div>
+            <div class="text-sm text-gray-600 dark:text-gray-400">
+              Total Projects
+            </div>
+          </div>
+          <div class="glass-effect p-6 rounded-xl hover-lift">
+            <div class="text-3xl font-bold gradient-text mb-2">5</div>
+            <div class="text-sm text-gray-600 dark:text-gray-400">Web Apps</div>
+          </div>
+          <div class="glass-effect p-6 rounded-xl hover-lift">
+            <div class="text-3xl font-bold gradient-text mb-2">6</div>
+            <div class="text-sm text-gray-600 dark:text-gray-400">
+              Mobile Apps
+            </div>
+          </div>
+          <div class="glass-effect p-6 rounded-xl hover-lift">
+            <div class="text-3xl font-bold gradient-text mb-2">8+</div>
+            <div class="text-sm text-gray-600 dark:text-gray-400">
+              Technologies
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Project Lists -->
-    <section class="container mx-auto px-4 pb-12">
-        <!-- Website Projects -->
-        <div id="website-projects" class="project-category">
-            <h2 class="text-2xl font-bold mb-6">Website Projects</h2>
-            <!-- Projects will be dynamically inserted here -->
-        </div>
-    
-        <!-- Mobile Projects -->
-        <div id="mobile-projects" class="project-category hidden">
-            <h2 class="text-2xl font-bold mb-6">Mobile Projects</h2>
-            <!-- Projects will be dynamically inserted here -->
-        </div>
-
-        <!-- C# Projects -->
-        <div id="csharp-projects" class="project-category hidden">
-            <h2 class="text-2xl font-bold mb-6">C# Projects</h2>
-            <!-- Projects will be dynamically inserted here -->
-        </div>
-    
-        <!-- Games Projects -->
-        <div id="cpp-projects" class="project-category hidden">
-            <h2 class="text-2xl font-bold mb-6">C++ Projects</h2>
-            <!-- Projects will be dynamically inserted here -->
-        </div>
-    
-
+    <!-- Enhanced Project Categories -->
+    <section class="pb-12 container mx-auto px-4">
+      <div class="flex flex-wrap justify-center gap-4 mb-12">
+        <button
+          onclick="showProjects('website')"
+          class="category-btn active flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white rounded-full hover:from-secondary hover:to-accent transition-all duration-300 text-lg font-semibold"
+        >
+          <i class="fas fa-globe text-xl"></i>
+          <span>Web Applications</span>
+          <span class="bg-white/20 px-2 py-1 rounded-full text-sm">5</span>
+        </button>
+        <button
+          onclick="showProjects('mobile')"
+          class="category-btn flex items-center gap-3 px-8 py-4 glass-effect rounded-full hover:bg-white/20 dark:hover:bg-black/20 transition-all duration-300 text-lg font-semibold"
+        >
+          <i class="fas fa-mobile-alt text-xl text-primary"></i>
+          <span>Mobile Apps</span>
+          <span class="bg-primary/20 px-2 py-1 rounded-full text-sm">6</span>
+        </button>
+        <button
+          onclick="showProjects('csharp')"
+          class="category-btn flex items-center gap-3 px-8 py-4 glass-effect rounded-full hover:bg-white/20 dark:hover:bg-black/20 transition-all duration-300 text-lg font-semibold"
+        >
+          <i class="fab fa-microsoft text-xl text-secondary"></i>
+          <span>Desktop Apps</span>
+          <span class="bg-secondary/20 px-2 py-1 rounded-full text-sm">1</span>
+        </button>
+        <button
+          onclick="showProjects('cpp')"
+          class="category-btn flex items-center gap-3 px-8 py-4 glass-effect rounded-full hover:bg-white/20 dark:hover:bg-black/20 transition-all duration-300 text-lg font-semibold"
+        >
+          <i class="fas fa-gamepad text-xl text-accent"></i>
+          <span>Games & More</span>
+          <span class="bg-accent/20 px-2 py-1 rounded-full text-sm">1</span>
+        </button>
+      </div>
     </section>
-    
-<!-- Footer -->
-<footer class="py-6 text-center border-t dark:border-gray-700">
-    <p>&copy; <span id="current-year"></span> Surafel Zewdu. All rights reserved.</p>
-</footer>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        document.getElementById("current-year").textContent = new Date().getFullYear();
-    });
-</script>
+    <!-- Enhanced Project Lists -->
+    <section class="container mx-auto px-4 pb-16">
+      <!-- Website Projects -->
+      <div id="website-projects" class="project-category">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold mb-4 gradient-text">
+            <i class="fas fa-globe mr-3"></i>Web Applications
+          </h2>
+          <p class="text-lg text-gray-600 dark:text-gray-400">
+            Full-stack web applications built with modern technologies
+          </p>
+        </div>
+        <!-- Projects will be dynamically inserted here -->
+      </div>
+
+      <!-- Mobile Projects -->
+      <div id="mobile-projects" class="project-category hidden">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold mb-4 gradient-text">
+            <i class="fas fa-mobile-alt mr-3"></i>Mobile Applications
+          </h2>
+          <p class="text-lg text-gray-600 dark:text-gray-400">
+            Cross-platform mobile apps built with Flutter and React Native
+          </p>
+        </div>
+        <!-- Projects will be dynamically inserted here -->
+      </div>
+
+      <!-- C# Projects -->
+      <div id="csharp-projects" class="project-category hidden">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold mb-4 gradient-text">
+            <i class="fab fa-microsoft mr-3"></i>Desktop Applications
+          </h2>
+          <p class="text-lg text-gray-600 dark:text-gray-400">
+            Windows desktop applications built with C# and .NET
+          </p>
+        </div>
+        <!-- Projects will be dynamically inserted here -->
+      </div>
+
+      <!-- Games Projects -->
+      <div id="cpp-projects" class="project-category hidden">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold mb-4 gradient-text">
+            <i class="fas fa-gamepad mr-3"></i>Games & Interactive Projects
+          </h2>
+          <p class="text-lg text-gray-600 dark:text-gray-400">
+            Interactive games and creative projects
+          </p>
+        </div>
+        <!-- Projects will be dynamically inserted here -->
+      </div>
+    </section>
+
+    <!-- Full Screen Modal -->
+    <div id="fullscreen-modal" class="fullscreen-modal">
+      <div class="modal-close" onclick="closeFullscreen()">
+        <i class="fas fa-times"></i>
+      </div>
+      <div class="swiper fullscreen-swiper">
+        <div class="swiper-wrapper"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+
+    <!-- Enhanced Footer -->
+    <footer class="py-12 bg-gradient-to-r from-gray-900 to-black text-white">
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-4 gap-8 mb-8">
+          <!-- Brand -->
+          <div class="md:col-span-2">
+            <h3 class="text-2xl font-bold gradient-text mb-4">
+              <i class="fas fa-code mr-2"></i>Surafel Zewdu
+            </h3>
+            <p class="text-gray-400 mb-4">
+              Passionate full-stack developer creating innovative solutions that
+              make a difference. Let's build something amazing together!
+            </p>
+            <div class="flex gap-4">
+              <a
+                href="https://github.com/surafel-47"
+                target="_blank"
+                class="social-icon glass-effect p-3 rounded-full hover:bg-white/10"
+              >
+                <i class="fab fa-github text-xl"></i>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/surafel-zewdu-0ba88b242/"
+                target="_blank"
+                class="social-icon glass-effect p-3 rounded-full hover:bg-white/10"
+              >
+                <i class="fab fa-linkedin text-xl"></i>
+              </a>
+              <a
+                href="https://t.me/Zufan47"
+                target="_blank"
+                class="social-icon glass-effect p-3 rounded-full hover:bg-white/10"
+              >
+                <i class="fab fa-telegram text-xl"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div>
+            <h4 class="text-lg font-semibold mb-4 text-primary">Quick Links</h4>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="index.html#home"
+                  class="text-gray-400 hover:text-white transition-colors flex items-center gap-2"
+                  ><i class="fas fa-home"></i>Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="index.html#experience"
+                  class="text-gray-400 hover:text-white transition-colors flex items-center gap-2"
+                  ><i class="fas fa-briefcase"></i>Experience</a
+                >
+              </li>
+              <li>
+                <a
+                  href="index.html#skills"
+                  class="text-gray-400 hover:text-white transition-colors flex items-center gap-2"
+                  ><i class="fas fa-cogs"></i>Skills</a
+                >
+              </li>
+              <li>
+                <a
+                  href="projects.html"
+                  class="text-gray-400 hover:text-white transition-colors flex items-center gap-2"
+                  ><i class="fas fa-project-diagram"></i>Projects</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Project Categories -->
+          <div>
+            <h4 class="text-lg font-semibold mb-4 text-secondary">
+              Project Types
+            </h4>
+            <ul class="space-y-2 text-gray-400">
+              <li class="flex items-center gap-2">
+                <i class="fas fa-globe"></i>Web Applications
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fas fa-mobile-alt"></i>Mobile Apps
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fab fa-microsoft"></i>Desktop Apps
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fas fa-gamepad"></i>Games & Interactive
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center"
+        >
+          <p class="text-gray-400 mb-4 md:mb-0">
+            &copy; <span id="current-year"></span> Surafel Zewdu. Crafted with
+            <i class="fas fa-heart text-red-500"></i> and lots of ☕
+          </p>
+          <div class="flex items-center gap-4 text-gray-400">
+            <span class="flex items-center gap-2">
+              <i class="fas fa-map-marker-alt"></i>Addis Ababa, Ethiopia
+            </span>
+            <span class="flex items-center gap-2">
+              <i class="fas fa-clock"></i>Available for freelance
+            </span>
+          </div>
+        </div>
+      </div>
+    </footer>
 
     <script>
-        function generateProjectHTML(project) {
-            // Create the HTML structure for each project
-            let projectHTML = `
-                <div class="mb-12 bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
-                    <h3 class="text-xl font-semibold mb-2">${project.title}</h3>
-                    <p class="mb-4 text-gray-600 dark:text-gray-400">${project.description}</p>
-                    <div class="flex gap-4 mb-6">
-                        ${project.githubLink ? `<a href="${project.githubLink}" class="text-primary hover:underline"><i class="fab fa-github mr-2"></i>GitHub Repo</a>` : ''}
-                        ${project.liveLink ? `<a href="${project.liveLink}" class="text-primary hover:underline"><i class="fas fa-external-link-alt mr-2"></i>Live Demo</a>` : ''}
-                    </div>
-                    <div class="project-media-container overflow-x-auto flex gap-4 py-4">
-                        ${project.media.map(media => `
-                            <div class="project-media-item">
-                                <img src="${media}" alt="Project Screenshot" class="project-media-img">
+      document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("current-year").textContent =
+          new Date().getFullYear();
+      });
+    </script>
+
+    <script>
+      function generateProjectHTML(project, projectIndex) {
+        // Enhanced HTML structure for each project with carousel
+        let projectHTML = `
+                <div class="project-card mb-16 glass-effect rounded-2xl p-8 hover-lift">
+                    <div class="flex flex-col lg:flex-row gap-8">
+                        <!-- Project Info -->
+                        <div class="lg:w-1/2">
+                            <h3 class="text-2xl font-bold mb-4 gradient-text">${
+                              project.title
+                            }</h3>
+                            <p class="mb-6 text-gray-600 dark:text-gray-400 leading-relaxed text-lg">${
+                              project.description
+                            }</p>
+                            
+                            <!-- Tech Stack Indicators -->
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                ${getTechStack(project.title)
+                                  .map(
+                                    (tech) => `
+                                    <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm font-medium">
+                                        ${tech}
+                                    </span>
+                                `
+                                  )
+                                  .join("")}
                             </div>
-                        `).join('')}
+                            
+                            <!-- Action Buttons -->
+                            <div class="flex flex-wrap gap-4">
+                                ${
+                                  project.githubLink
+                                    ? `
+                                    <a href="${project.githubLink}" target="_blank" class="inline-flex items-center gap-2 bg-gradient-to-r from-gray-700 to-gray-900 text-white px-6 py-3 rounded-full hover:from-gray-600 hover:to-gray-800 transition-all duration-300">
+                                        <i class="fab fa-github"></i>View Code
+                                    </a>
+                                `
+                                    : ""
+                                }
+                                ${
+                                  project.liveLink
+                                    ? `
+                                    <a href="${project.liveLink}" target="_blank" class="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-secondary text-white px-6 py-3 rounded-full hover:from-secondary hover:to-accent transition-all duration-300 glow-effect">
+                                        <i class="fas fa-external-link-alt"></i>Live Demo
+                                    </a>
+                                `
+                                    : ""
+                                }
+                            </div>
+                        </div>
+                        
+                        <!-- Project Media Carousel -->
+                        <div class="lg:w-1/2">
+                            ${
+                              project.media && project.media.length > 0
+                                ? `
+                                <div class="relative">
+                                    <button class="expand-btn" onclick="openFullscreen(${JSON.stringify(
+                                      project.media
+                                    ).replace(/"/g, "&quot;")}, 0)">
+                                        <i class="fas fa-expand"></i>
+                                    </button>
+                                    <div class="swiper project-swiper project-swiper-${projectIndex}">
+                                        <div class="swiper-wrapper">
+                                            ${project.media
+                                              .map(
+                                                (media, index) => `
+                                                <div class="swiper-slide">
+                                                    <img src="${media}" alt="Project Screenshot ${
+                                                  index + 1
+                                                }" onclick="openFullscreen(${JSON.stringify(
+                                                  project.media
+                                                ).replace(
+                                                  /"/g,
+                                                  "&quot;"
+                                                )}, ${index})">
+                                                </div>
+                                            `
+                                              )
+                                              .join("")}
+                                        </div>
+                                        ${
+                                          project.media.length > 1
+                                            ? `
+                                            <div class="swiper-button-next"></div>
+                                            <div class="swiper-button-prev"></div>
+                                            <div class="swiper-pagination"></div>
+                                        `
+                                            : ""
+                                        }
+                                    </div>
+                                </div>
+                            `
+                                : `
+                                <div class="flex items-center justify-center h-96 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-xl">
+                                    <div class="text-center">
+                                        <i class="fas fa-image text-6xl text-primary/50 mb-4"></i>
+                                        <p class="text-gray-600 dark:text-gray-400">Screenshots coming soon</p>
+                                    </div>
+                                </div>
+                            `
+                            }
+                        </div>
                     </div>
                 </div>
             `;
-            return projectHTML;
+        return projectHTML;
+      }
+
+      // Function to determine tech stack based on project title/description
+      function getTechStack(title) {
+        const techMap = {
+          "Ethiopian Road Authority": [
+            "Python",
+            "Django",
+            "PostgreSQL",
+            "HTML/CSS",
+          ],
+          "Et Legal Chatbot": ["Python", "Node.js", "Vue.js", "AI/ML"],
+          "Tesde Social Media": ["Vue.js", "Node.js", "MongoDB", "JWT"],
+          "Addis Times Blog": ["Vue.js", "Express", "MongoDB", "Tailwind"],
+          "Mercury Shopping": ["ASP.NET", "C#", "SQL Server", "MVC"],
+          "Crooze Ride": ["React Native", "Flutter", "Mobile"],
+          "Facial Recognition": ["Flutter", "AI/ML", "Python"],
+          "Wallpaper App": ["Flutter", "API", "State Management"],
+          "Weather App": ["Flutter", "API", "Provider"],
+          Calculator: ["Flutter", "State Management"],
+          "Zues Supermarket": ["C#", "WinForms", "SQL Server"],
+        };
+
+        for (let key in techMap) {
+          if (title.includes(key)) {
+            return techMap[key];
+          }
         }
+        return ["Web Development", "Mobile", "Software"];
+      }
 
-        function loadProjects(category) {
-            const projectContainer = document.getElementById(category + '-projects');
-            projectContainer.innerHTML = ''; // Clear any existing content
+      function loadProjects(category) {
+        const projectContainer = document.getElementById(
+          category + "-projects"
+        );
+        const existingProjects =
+          projectContainer.querySelector(".projects-grid");
 
-            projects[category].forEach(project => {
-                projectContainer.innerHTML += generateProjectHTML(project);
+        if (!existingProjects) {
+          const projectsGrid = document.createElement("div");
+          projectsGrid.className = "projects-grid space-y-8";
+
+          projects[category].forEach((project, index) => {
+            const projectElement = document.createElement("div");
+            projectElement.innerHTML = generateProjectHTML(project, index);
+            projectElement.className = "stagger-animation";
+            projectElement.style.animationDelay = `${index * 0.1}s`;
+            projectsGrid.appendChild(projectElement);
+          });
+
+          projectContainer.appendChild(projectsGrid);
+
+          // Initialize Swiper for each project
+          setTimeout(() => {
+            projects[category].forEach((project, index) => {
+              if (project.media && project.media.length > 0) {
+                new Swiper(`.project-swiper-${index}`, {
+                  loop: project.media.length > 1,
+                  autoplay:
+                    project.media.length > 1
+                      ? {
+                          delay: 4000,
+                          disableOnInteraction: false,
+                        }
+                      : false,
+                  navigation:
+                    project.media.length > 1
+                      ? {
+                          nextEl: `.project-swiper-${index} .swiper-button-next`,
+                          prevEl: `.project-swiper-${index} .swiper-button-prev`,
+                        }
+                      : false,
+                  pagination:
+                    project.media.length > 1
+                      ? {
+                          el: `.project-swiper-${index} .swiper-pagination`,
+                          clickable: true,
+                        }
+                      : false,
+                });
+              }
             });
+          }, 100);
         }
+      }
 
-        // Load Website projects on page load
-        document.addEventListener("DOMContentLoaded", function() {
-            loadProjects('website');
-            loadProjects('mobile');
-            loadProjects('cpp');
-            loadProjects('csharp');
-        });
+      // Load all projects on page load
+      document.addEventListener("DOMContentLoaded", function () {
+        loadProjects("website");
+        loadProjects("mobile");
+        loadProjects("cpp");
+        loadProjects("csharp");
 
+        // Set website as default active
+        document.querySelector(".category-btn").classList.add("active");
+      });
     </script>
-</body>
+  </body>
 </html>

@@ -9,11 +9,101 @@
     <link rel="stylesheet" href="index.css">
     <!-- Icons CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <!-- SimpleLightbox CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" rel="stylesheet">
     <link rel="icon" href="favicon.png" type="image/png">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    
+    <style>
+        /* Enhanced animations and effects */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(96, 165, 250, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(96, 165, 250, 0.6); }
+        }
+        
+        @keyframes pulse-border {
+            0%, 100% { border-color: rgba(96, 165, 250, 0.3); }
+            50% { border-color: rgba(96, 165, 250, 0.8); }
+        }
+        
+        .float-animation { animation: float 6s ease-in-out infinite; }
+        .glow-effect { animation: glow 3s ease-in-out infinite; }
+        .pulse-border { animation: pulse-border 2s ease-in-out infinite; }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #60A5FA, #A78BFA, #F472B6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .dark .glass-effect {
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .dark .hover-lift:hover {
+            box-shadow: 0 10px 25px rgba(96, 165, 250, 0.2);
+        }
+        
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .skill-card {
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+        
+        .skill-card:hover {
+            border-left-color: #60A5FA;
+            transform: translateX(10px);
+            background: rgba(96, 165, 250, 0.05);
+        }
+        
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: scale(1.2) rotate(5deg);
+        }
+    </style>
+    
     <script>
         // Tailwind Configuration
         tailwind.config = {
@@ -22,6 +112,8 @@
                 extend: {
                     colors: {
                         primary: '#60A5FA',
+                        secondary: '#A78BFA',
+                        accent: '#F472B6',
                     }
                 }
             }
@@ -41,419 +133,688 @@
         // Skills dropdown toggle
         function toggleSkill(id) {
             const content = document.getElementById(id);
+            const icon = content.previousElementSibling.querySelector('.fas.fa-chevron-down');
             content.classList.toggle('hidden');
+            icon.style.transform = content.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
         }
     </script>
 </head>
-<body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200">
-    <!-- Header -->
-    <header class="fixed w-full top-0 bg-white dark:bg-gray-900 shadow-sm z-50">
+<body class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-800 dark:text-gray-200">
+    <!-- Enhanced Header with Glass Effect -->
+    <header class="fixed w-full top-0 glass-effect z-50 border-b border-white/20">
         <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex gap-8">
-                <h1 class="text-xl font-bold"><a href="index.html#home">Surafel Zewdu</a></h1>
+                <h1 class="text-xl font-bold gradient-text">
+                    <a href="index.html#home">
+                        <i class="fas fa-code mr-2"></i>Surafel Zewdu
+                    </a>
+                </h1>
                 <ul class="hidden md:flex space-x-6 pt-1">
-                    <li><a href="index.html#experience" class="hover:text-primary">Experience</a></li>
-                    <li><a href="index.html#skills" class="hover:text-primary">Skills</a></li>
-                    <li><a href="index.html#contact" class="hover:text-primary">Contact</a></li>
+                    <li>
+                        <a href="index.html#experience" class="hover:text-primary transition-colors flex items-center gap-2">
+                            <i class="fas fa-briefcase"></i>Experience
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.html#skills" class="hover:text-primary transition-colors flex items-center gap-2">
+                            <i class="fas fa-cogs"></i>Skills
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.html#contact" class="hover:text-primary transition-colors flex items-center gap-2">
+                            <i class="fas fa-envelope"></i>Contact
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div class="flex items-center gap-6">
                 <ul class="hidden md:flex space-x-6">
                     <li>
-                        <a href="projects.html" class="inline-block bg-primary text-white px-6 py-2 rounded-full hover:bg-blue-600 transition-colors">
-                          Projects <i class="fas fa-project-diagram ml-2"></i>
+                        <a href="projects.html" class="inline-block bg-gradient-to-r from-primary to-secondary text-white px-6 py-2 rounded-full hover:from-secondary hover:to-accent transition-all duration-300 glow-effect">
+                          <i class="fas fa-project-diagram mr-2"></i>Projects
                         </a>
-                      </li>
-                                      </ul>
-                <button onclick="toggleDarkMode()" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
-                    <i class="fas fa-moon dark:hidden"></i>
-                    <i class="fas fa-sun hidden dark:block"></i>
+                    </li>
+                </ul>
+                <button onclick="toggleDarkMode()" class="p-2 rounded-lg glass-effect hover:bg-white/20 dark:hover:bg-black/20 transition-all">
+                    <i class="fas fa-moon dark:hidden text-yellow-500"></i>
+                    <i class="fas fa-sun hidden dark:block text-yellow-400"></i>
                 </button>
                 <!-- Mobile Menu Button -->
-                <button class="md:hidden" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <button class="md:hidden glass-effect p-2 rounded-lg" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
         </nav>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden px-4 py-2 bg-gray-50 dark:bg-gray-800">
+        <!-- Enhanced Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-4 py-2 glass-effect border-t border-white/20">
             <ul class="space-y-2">
-                <li><a href="#home" class="block py-2 hover:text-primary">Home</a></li>
-                <li><a href="projects.html" class="block py-2 hover:text-primary">Projects</a></li>
-                <li><a href="#experience" class="block py-2 hover:text-primary">Experience</a></li>
-                <li><a href="#skills" class="block py-2 hover:text-primary">Skills</a></li>
-                <li><a href="#contact" class="block py-2 hover:text-primary">Contact</a></li>
+                <li><a href="#home" class="block py-2 hover:text-primary transition-colors flex items-center gap-2"><i class="fas fa-home"></i>Home</a></li>
+                <li><a href="projects.html" class="block py-2 hover:text-primary transition-colors flex items-center gap-2"><i class="fas fa-project-diagram"></i>Projects</a></li>
+                <li><a href="#experience" class="block py-2 hover:text-primary transition-colors flex items-center gap-2"><i class="fas fa-briefcase"></i>Experience</a></li>
+                <li><a href="#skills" class="block py-2 hover:text-primary transition-colors flex items-center gap-2"><i class="fas fa-cogs"></i>Skills</a></li>
+                <li><a href="#contact" class="block py-2 hover:text-primary transition-colors flex items-center gap-2"><i class="fas fa-envelope"></i>Contact</a></li>
             </ul>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="pt-24 pb-12 container mx-auto px-4">
-        <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+    <!-- Enhanced Hero Section with Particles -->
+    <section id="home" class="pt-24 pb-12 container mx-auto px-4 relative min-h-screen flex items-center">
+        <div id="particles-js"></div>
+        <div class="hero-content flex flex-col md:flex-row items-center justify-between gap-8 w-full">
             <div class="max-w-xl">
-                <h2 class="text-4xl font-bold mb-4">Hi, I'm Surafel</h2>
-                <p class="text-xl mb-4">Programmer and App Developer</p>
-                <p class="mb-6 text-gray-600 dark:text-gray-400">
-                    I'm a 4th year Computer Science student at HiLCoE College. My expertise spans both front-end and back-end development, with a focus on creating efficient and user-friendly applications.
+                <h2 class="text-5xl font-bold mb-4">
+                    Hi, I'm <span class="gradient-text">Surafel</span>
+                </h2>
+                <p class="text-2xl mb-4 text-secondary">Programmer and App Developer</p>
+                <p class="mb-8 text-gray-600 dark:text-gray-400 text-lg leading-relaxed">
+                    I'm a passionate 4th year Computer Science student at HiLCoE College with expertise in modern web technologies, mobile development, and cloud solutions. I love creating innovative applications that solve real-world problems and enhance user experiences.
                 </p>
-                <a href="#" class="inline-block bg-primary text-white px-6 py-2 rounded-full hover:bg-blue-600 transition-colors" id="download-cv">
-                    Download CV <i class="fas fa-download ml-2"></i>
-                </a>
+                
+                <!-- Enhanced Stats -->
+                <div class="grid grid-cols-3 gap-6 mb-8">
+                    <div class="text-center glass-effect p-4 rounded-lg hover-lift">
+                        <div class="text-3xl font-bold gradient-text">15+</div>
+                        <div class="text-sm text-gray-600 dark:text-gray-400">Projects</div>
+                    </div>
+                    <div class="text-center glass-effect p-4 rounded-lg hover-lift">
+                        <div class="text-3xl font-bold gradient-text">3+</div>
+                        <div class="text-sm text-gray-600 dark:text-gray-400">Years Experience</div>
+                    </div>
+                    <div class="text-center glass-effect p-4 rounded-lg hover-lift">
+                        <div class="text-3xl font-bold gradient-text">8+</div>
+                        <div class="text-sm text-gray-600 dark:text-gray-400">Technologies</div>
+                    </div>
+                </div>
+                
+                <div class="flex flex-wrap gap-4 mb-8">
+                    <a href="#" class="inline-block bg-gradient-to-r from-primary to-secondary text-white px-8 py-3 rounded-full hover:from-secondary hover:to-accent transition-all duration-300 glow-effect" id="download-cv">
+                        <i class="fas fa-download mr-2"></i>Download CV
+                    </a>
+                    <a href="#contact" class="inline-block glass-effect px-8 py-3 rounded-full hover:bg-white/20 dark:hover:bg-black/20 transition-all duration-300 pulse-border border">
+                        <i class="fas fa-paper-plane mr-2"></i>Get In Touch
+                    </a>
+                </div>
+                
+                <!-- Social Links -->
+                <div class="flex gap-4">
+                    <a href="https://github.com/surafel-47" target="_blank" class="social-icon glass-effect p-3 rounded-full hover:bg-white/20 dark:hover:bg-black/20">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/surafel-zewdu-0ba88b242/" target="_blank" class="social-icon glass-effect p-3 rounded-full hover:bg-white/20 dark:hover:bg-black/20">
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </a>
+                    <a href="https://t.me/Zufan47" target="_blank" class="social-icon glass-effect p-3 rounded-full hover:bg-white/20 dark:hover:bg-black/20">
+                        <i class="fab fa-telegram text-xl"></i>
+                    </a>
+                </div>
                 
                 <script>
                     document.getElementById('download-cv').addEventListener('click', function(event) {
-                        event.preventDefault();  // Prevent default action of the link
-                        const fileUrl = 'assets/surafel_zewdu.pdf'; // Path to the CV file in the assets directory
+                        event.preventDefault();
+                        const fileUrl = 'assets/surafel_zewdu.pdf';
                         const link = document.createElement('a');
                         link.href = fileUrl;
-                        link.download = 'Surafel Zewdu CV.pdf'; // The name you want to give the file when downloaded
-                        link.click(); // Simulate click to download the file
+                        link.download = 'Surafel Zewdu CV.pdf';
+                        link.click();
                     });
                 </script>
-                
             </div>
-            <div class="w-64 h-64 rounded-full overflow-hidden bg-gray-200">
-                <!-- Replace with your profile picture -->
-                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-GW4mbGVRYYXxa5EVEvxVdSscACBQg2.png" alt="Profile" class="w-full h-full object-cover">
+            
+            <!-- Enhanced Profile Picture -->
+            <div class="relative">
+                <div class="w-80 h-80 rounded-full overflow-hidden bg-gradient-to-br from-primary to-secondary p-1 float-animation">
+                    <div class="w-full h-full rounded-full overflow-hidden bg-white dark:bg-gray-800">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-GW4mbGVRYYXxa5EVEvxVdSscACBQg2.png" alt="Profile" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <!-- Floating elements around profile -->
+                <div class="absolute -top-4 -right-4 glass-effect p-3 rounded-full float-animation" style="animation-delay: -2s;">
+                    <i class="fas fa-code text-primary text-xl"></i>
+                </div>
+                <div class="absolute -bottom-4 -left-4 glass-effect p-3 rounded-full float-animation" style="animation-delay: -4s;">
+                    <i class="fas fa-mobile-alt text-secondary text-xl"></i>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="py-12 bg-gray-50 dark:bg-gray-800">
+    <!-- Enhanced Experience Section -->
+    <section id="experience" class="py-16 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-8 text-center">Experience & Education</h2>
-            <div class="grid md:grid-cols-2 gap-8">
+            <h2 class="text-4xl font-bold mb-12 text-center gradient-text">
+                <i class="fas fa-briefcase mr-3"></i>Experience & Education
+            </h2>
+            <div class="grid md:grid-cols-2 gap-12">
                 <!-- Work Experience -->
-                <div class="space-y-6">
-                    <h3 class="text-2xl font-semibold mb-4">Work Experience</h3>
-                    <div class="border-l-2 border-primary pl-4 space-y-4">
+                <div class="space-y-8">
+                    <h3 class="text-3xl font-semibold mb-6 flex items-center gap-3">
+                        <i class="fas fa-laptop-code text-primary"></i>Work Experience
+                    </h3>
+                    <div class="border-l-4 border-primary pl-6 space-y-8">
                         <!-- MMCY Tech -->
-                        <div class="flex justify-between items-center">
-                            <div class="flex items-center gap-4">
-                                <h4 class="font-semibold">Software Developer - MMCY Tech</h4>
-                                <a href="https://www.mmcyltd.com" target="_blank" class="text-lg text-gray-600 dark:text-gray-400">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
+                        <div class="glass-effect p-6 rounded-lg hover-lift">
+                            <div class="flex justify-between items-start mb-3">
+                                <div class="flex items-center gap-4">
+                                    <h4 class="font-semibold text-lg">Software Developer - MMCY Tech</h4>
+                                    <a href="https://www.mmcyltd.com" target="_blank" class="text-primary hover:text-secondary transition-colors">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                                <div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>2024 - Present</span>
+                                </div>
                             </div>
-                            <div class="flex items-center gap-2">
-                                <i class="fas fa-calendar-alt text-lg text-gray-600 dark:text-gray-400"></i>
-                                <p class="text-sm font-semibold text-gray-600 dark:text-gray-400">2024 - Present</p>
-                            </div>
+                            <p class="text-gray-600 dark:text-gray-400">Developing internal tools and automating processes for improved productivity and workflow.</p>
                         </div>
-                        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Developing internal tools and automating processes for improved productivity and workflow.</p>
 
                         <!-- Ethiopian Road Authority -->
-                        <div class="flex justify-between items-center">
-                            <div class="flex items-center gap-4">
-                                <h4 class="font-semibold">Full Stack Developer - Ethiopian Road Authority</h4>
-                                <a href="https://www.era.gov.et" target="_blank" class="text-lg text-gray-600 dark:text-gray-400">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
+                        <div class="glass-effect p-6 rounded-lg hover-lift">
+                            <div class="flex justify-between items-start mb-3">
+                                <div class="flex items-center gap-4">
+                                    <h4 class="font-semibold text-lg">Full Stack Developer - Ethiopian Road Authority</h4>
+                                    <a href="https://www.era.gov.et" target="_blank" class="text-primary hover:text-secondary transition-colors">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                                <div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>2024 (Contractual)</span>
+                                </div>
                             </div>
-                            <div class="flex items-center gap-2">
-                                <i class="fas fa-calendar-alt text-lg text-gray-600 dark:text-gray-400"></i>
-                                <p class="text-sm font-semibold text-gray-600 dark:text-gray-400">2024 - 2024 (Contractual)</p>
-                            </div>
+                            <p class="text-gray-600 dark:text-gray-400 mb-3">Developed a Python-based web portal for Heavy Vehicles Load registration system used throughout the country.</p>
+                            <ul class="list-disc pl-5 space-y-1 text-sm text-gray-600 dark:text-gray-400">
+                                <li>Developed Axle Load Management Module</li>
+                                <li>Implemented Road Condition Inspection System</li>
+                                <li>Integrated Telebirr Payment System</li>
+                                <li>Enhanced Reporting Dashboard</li>
+                            </ul>
                         </div>
-                        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Contractual work to develop a Python-based web portal for the Ethiopian Road Authority (ERA). Mainly developing a Heavy Vehicles Load (Axle Load) registration system used throughout the country in 11 stations, including Mojo and Sendafa stations. </p>
-                        <ul class="list-disc pl-5 mt-2 text-sm text-gray-600 dark:text-gray-400">
-                            <li>Developed Axle Load Management Module</li>
-                            <li>Implemented a Road Condition Inspection and Survey Management System</li>
-                            <li>Integrated Telebirr Penarlity Payment System for overloaded Vehicles  </li>
-                            <li>Enhanced Reporting and Analytics Dashboard</li>
-                        </ul>
-                
+
                         <!-- Crooze Company -->
-                        <div class="flex justify-between items-center">
-                            <div class="flex items-center gap-4">
-                                <h4 class="font-semibold">Mobile App Developer - Crooze Company</h4>
-                                <a href="https://www.crooze.com" target="_blank" class="text-lg text-gray-600 dark:text-gray-400">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
+                        <div class="glass-effect p-6 rounded-lg hover-lift">
+                            <div class="flex justify-between items-start mb-3">
+                                <div class="flex items-center gap-4">
+                                    <h4 class="font-semibold text-lg">Mobile App Developer - Crooze Company</h4>
+                                    <a href="https://www.crooze.com" target="_blank" class="text-primary hover:text-secondary transition-colors">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                                <div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>2023 - 2024</span>
+                                </div>
                             </div>
-                            <div class="flex items-center gap-2">
-                                <i class="fas fa-calendar-alt text-lg text-gray-600 dark:text-gray-400"></i>
-                                <p class="text-sm font-semibold text-gray-600 dark:text-gray-400">2023 - 2024</p>
-                            </div>
+                            <p class="text-gray-600 dark:text-gray-400">Worked on mobile applications with React Native and Flutter for Crooze Shared Ride School App</p>
                         </div>
-                        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Worked on mobile applications with React Native and Flutter for Crooze Shared Ride School App</p>
-                
-                        <!-- Mereja Tech -->
-                        <div class="flex justify-between items-center">
-                            <div class="flex items-center gap-4">
-                                <h4 class="font-semibold">Intern Mobile App Developer - Mereja Tech</h4>
-                                <a href="https://www.merejatech.com" target="_blank" class="text-lg text-gray-600 dark:text-gray-400">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <i class="fas fa-calendar-alt text-lg text-gray-600 dark:text-gray-400"></i>
-                                <p class="text-sm font-semibold text-gray-600 dark:text-gray-400">2023 - 2024</p>
-                            </div>
-                        </div>
-                        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Developing Mobile Applications</p>
-            
                     </div>
                 </div>
                 
                 <!-- Education -->
-                <div class="space-y-6">
-                    <h3 class="text-2xl font-semibold mb-4">Education</h3>
-                    <div class="border-l-2 border-primary pl-4 space-y-4">
-                        <!-- New Education Entry -->
-                        <div class="flex justify-between items-center">
-                            <div class="flex items-center gap-4">
-                                <h4 class="font-semibold">MMCY FullStack Developer Bootcamp</h4>
-                                <a href="https://www.mmcy.com/bootcamp" target="_blank" class="text-lg text-gray-600 dark:text-gray-400">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
+                <div class="space-y-8">
+                    <h3 class="text-3xl font-semibold mb-6 flex items-center gap-3">
+                        <i class="fas fa-graduation-cap text-secondary"></i>Education
+                    </h3>
+                    <div class="border-l-4 border-secondary pl-6 space-y-8">
+                        <!-- MMCY Bootcamp -->
+                        <div class="glass-effect p-6 rounded-lg hover-lift">
+                            <div class="flex justify-between items-start mb-3">
+                                <div class="flex items-center gap-4">
+                                    <h4 class="font-semibold text-lg">MMCY FullStack Developer Bootcamp</h4>
+                                    <a href="https://www.mmcy.com/bootcamp" target="_blank" class="text-secondary hover:text-accent transition-colors">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                                <div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>2024</span>
+                                </div>
                             </div>
-                            <div class="flex items-center gap-2">
-                                <i class="fas fa-calendar-alt text-lg text-gray-600 dark:text-gray-400"></i>
-                                <p class="text-sm font-semibold text-gray-600 dark:text-gray-400">2024 - 3 Months</p>
-                            </div>
+                            <p class="text-gray-600 dark:text-gray-400">FullStack Development Training in Vue.js and Node.js(Express)</p>
                         </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">FullStack Development Training in Vue.js and Node.js(Express)</p>
-                
-                        <!-- Existing Education Entries -->
-                        <div class="flex justify-between items-center">
-                            <div class="flex items-center gap-4">
-                                <h4 class="font-semibold">BSc in Computer Science</h4>
-                                <a href="https://www.hilcoe.edu.et" target="_blank" class="text-lg text-gray-600 dark:text-gray-400">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
+
+                        <!-- BSc Computer Science -->
+                        <div class="glass-effect p-6 rounded-lg hover-lift">
+                            <div class="flex justify-between items-start mb-3">
+                                <div class="flex items-center gap-4">
+                                    <h4 class="font-semibold text-lg">BSc in Computer Science</h4>
+                                    <a href="https://www.hilcoe.edu.et" target="_blank" class="text-secondary hover:text-accent transition-colors">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                                <div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>2020 - 2024</span>
+                                </div>
                             </div>
-                            <div class="flex items-center gap-2">
-                                <i class="fas fa-calendar-alt text-lg text-gray-600 dark:text-gray-400"></i>
-                                <p class="text-sm font-semibold text-gray-600 dark:text-gray-400">2020 - 2024</p>
-                            </div>
+                            <p class="text-gray-600 dark:text-gray-400">HiLCoE College, Addis Ababa</p>
                         </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">HiLCoE College, Addis Ababa</p>
-                
-                        <div class="flex justify-between items-center">
-                            <div class="flex items-center gap-4">
-                                <h4 class="font-semibold">Microsoft Azure Fundamentals</h4>
-                                <a href="https://learn.microsoft.com/en-us/certifications/azure-fundamentals/" target="_blank" class="text-lg text-gray-600 dark:text-gray-400">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
+
+                        <!-- Microsoft Azure -->
+                        <div class="glass-effect p-6 rounded-lg hover-lift">
+                            <div class="flex justify-between items-start mb-3">
+                                <div class="flex items-center gap-4">
+                                    <h4 class="font-semibold text-lg">Microsoft Azure Fundamentals</h4>
+                                    <a href="https://learn.microsoft.com/en-us/certifications/azure-fundamentals/" target="_blank" class="text-secondary hover:text-accent transition-colors">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                                <div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>2023</span>
+                                </div>
                             </div>
-                            <div class="flex items-center gap-2">
-                                <i class="fas fa-calendar-alt text-lg text-gray-600 dark:text-gray-400"></i>
-                                <p class="text-sm font-semibold text-gray-600 dark:text-gray-400">2023</p>
-                            </div>
+                            <p class="text-gray-600 dark:text-gray-400">Cloud computing fundamentals and Azure services training</p>
                         </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">Currently Enrolled in Microsoft Azure Fundamentals Course in Collaboration with Partners from Wollo University App Factory  Academy.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex justify-center mt-12">
+                <a href="projects.html" class="inline-block bg-gradient-to-r from-primary to-secondary text-white px-12 py-4 rounded-full hover:from-secondary hover:to-accent transition-all duration-300 glow-effect text-lg">
+                   <i class="fas fa-rocket mr-3"></i>Explore My Projects
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Skills Section -->
+    <section id="skills" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-12 text-center gradient-text">
+                <i class="fas fa-cogs mr-3"></i>My Skills
+            </h2>
+            <div class="max-w-4xl mx-auto space-y-6">
+                <!-- Vue.js -->
+                <div class="skill-card glass-effect rounded-lg overflow-hidden hover-lift">
+                    <button onclick="toggleSkill('vue-content')" class="w-full p-6 flex justify-between items-center">
+                        <span class="font-semibold text-lg flex items-center gap-3">
+                            <i class="fab fa-vuejs text-green-500 text-2xl"></i> Vue.js
+                        </span>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div id="vue-content" class="hidden p-6 border-t border-gray-200 dark:border-gray-700">
+                        <ul class="grid md:grid-cols-2 gap-3 list-disc pl-5">
+                            <li>Component-based architecture</li>
+                            <li>Vue Router & Vuex (State Management)</li>
+                            <li>Reactivity & Two-Way Data Binding</li>
+                            <li>REST API Integration</li>
+                            <li>Single Page Applications (SPA)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Python Django -->
+                <div class="skill-card glass-effect rounded-lg overflow-hidden hover-lift">
+                    <button onclick="toggleSkill('django-content')" class="w-full p-6 flex justify-between items-center">
+                        <span class="font-semibold text-lg flex items-center gap-3">
+                            <i class="fab fa-python text-blue-500 text-2xl"></i> Python Django
+                        </span>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div id="django-content" class="hidden p-6 border-t border-gray-200 dark:border-gray-700">
+                        <ul class="grid md:grid-cols-2 gap-3 list-disc pl-5">
+                            <li>MVC (Model-View-Template) Architecture</li>
+                            <li>ORM (Object-Relational Mapping)</li>
+                            <li>Authentication & Authorization</li>
+                            <li>REST API Development (Django Rest Framework)</li>
+                            <li>Database Integration (PostgreSQL, MySQL, SQLite)</li>
+                        </ul>
                     </div>
                 </div>
                 
+                <!-- Flutter -->
+                <div class="skill-card glass-effect rounded-lg overflow-hidden hover-lift">
+                    <button onclick="toggleSkill('flutter-content')" class="w-full p-6 flex justify-between items-center">
+                        <span class="font-semibold text-lg flex items-center gap-3">
+                            <i class="fas fa-mobile-alt text-cyan-500 text-2xl"></i> Flutter
+                        </span>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div id="flutter-content" class="hidden p-6 border-t border-gray-200 dark:border-gray-700">
+                        <ul class="grid md:grid-cols-2 gap-3 list-disc pl-5">
+                            <li>Cross-Platform Development</li>
+                            <li>State Management</li>
+                            <li>Package Management</li>
+                            <li>REST APIs</li>
+                            <li>Responsive Layouts</li>
+                            <li>Native Performance</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Node.js -->
+                <div class="skill-card glass-effect rounded-lg overflow-hidden hover-lift">
+                    <button onclick="toggleSkill('nodejs-content')" class="w-full p-6 flex justify-between items-center">
+                        <span class="font-semibold text-lg flex items-center gap-3">
+                            <i class="fab fa-node-js text-green-600 text-2xl"></i> Node.js (Express) & MongoDB
+                        </span>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div id="nodejs-content" class="hidden p-6 border-t border-gray-200 dark:border-gray-700">
+                        <ul class="grid md:grid-cols-2 gap-3 list-disc pl-5">
+                            <li>RESTful API Development</li>
+                            <li>Database Integration</li>
+                            <li>Authentication & Authorization</li>
+                            <li>Middleware Development</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- HTML, CSS, JS -->
+                <div class="skill-card glass-effect rounded-lg overflow-hidden hover-lift">
+                    <button onclick="toggleSkill('web-content')" class="w-full p-6 flex justify-between items-center">
+                        <span class="font-semibold text-lg flex items-center gap-3">
+                            <i class="fas fa-code text-orange-500 text-2xl"></i> HTML, CSS, JS (ES6)
+                        </span>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div id="web-content" class="hidden p-6 border-t border-gray-200 dark:border-gray-700">
+                        <ul class="grid md:grid-cols-2 gap-3 list-disc pl-5">
+                            <li>Structured documents using HTML</li>
+                            <li>DOM real-time manipulation</li>
+                            <li>Event handling responsive UIs</li>
+                            <li>Responsive design with media queries</li>
+                            <li>CSS animations and transitions</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- ASP.NET MVC -->
+                <div class="skill-card glass-effect rounded-lg overflow-hidden hover-lift">
+                    <button onclick="toggleSkill('asp-content')" class="w-full p-6 flex justify-between items-center">
+                        <span class="font-semibold text-lg flex items-center gap-3">
+                            <i class="fas fa-laptop-code text-purple-500 text-2xl"></i> ASP.NET MVC
+                        </span>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div id="asp-content" class="hidden p-6 border-t border-gray-200 dark:border-gray-700">
+                        <ul class="grid md:grid-cols-2 gap-3 list-disc pl-5">
+                            <li>MVC (Model-View-Controller) Architecture</li>
+                            <li>Entity Framework</li>
+                            <li>Views and Razor Syntax</li>
+                            <li>ASP.NET Core's middleware pipelining</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Databases -->
+                <div class="skill-card glass-effect rounded-lg overflow-hidden hover-lift">
+                    <button onclick="toggleSkill('db-content')" class="w-full p-6 flex justify-between items-center">
+                        <span class="font-semibold text-lg flex items-center gap-3">
+                            <i class="fas fa-database text-red-500 text-2xl"></i> SQL Server & MySQL
+                        </span>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div id="db-content" class="hidden p-6 border-t border-gray-200 dark:border-gray-700">
+                        <ul class="grid md:grid-cols-2 gap-3 list-disc pl-5">
+                            <li>SQL (Structured Query Language)</li>
+                            <li>Relationships (1:1, 1:M, N:M)</li>
+                            <li>Triggers and Procedures</li>
+                            <li>Design normalized database schemas</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="flex justify-center mt-8">
-            <a href="projects.html" class="inline-block bg-primary text-white px-16 py-2 rounded-full hover:bg-blue-600 transition-colors">
-               Explore More Projects <i class="fas fa-project-diagram ml-2"></i>
-              </a>
-        </div>
-    
     </section>
-    
-    
 
-<!-- Skills Section -->
-<section id="skills" class="py-12">
-    <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold mb-8 text-center">My Skills</h2>
-        <div class="max-w-2xl mx-auto space-y-4">
-
-
-        <!-- Vue.js -->
-        <div class="border dark:border-gray-700 rounded-lg">
-            <button onclick="toggleSkill('vue-content')" class="w-full p-4 flex justify-between items-center">
-                <span class="font-semibold"><i class="fab fa-vuejs mr-2"></i> Vue.js</span>
-                <i class="fas fa-chevron-down"></i>
-            </button>
-            <div id="vue-content" class="hidden p-4 border-t dark:border-gray-700">
-                <ul class="list-disc pl-5 space-y-2">
-                    <li>Component-based architecture</li>
-                    <li>Vue Router & Vuex (State Management)</li>
-                    <li>Reactivity & Two-Way Data Binding</li>
-                    <li>REST API Integration</li>
-                    <li>Single Page Applications (SPA)</li>
-                </ul>
+    <!-- Enhanced Certificates Section -->
+    <section class="py-16 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-12 text-center gradient-text">
+                <i class="fas fa-certificate mr-3"></i>My Certificates
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Certificate Item -->
+                <div class="glass-effect rounded-xl overflow-hidden shadow-lg hover-lift">
+                    <a href="assets/cert1.png" data-fancybox="certificates" data-caption="Web Development Certification">
+                        <img src="assets/cert1.png" alt="Certificate 1" class="w-full h-48 object-cover cursor-pointer">
+                    </a>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Full Stack - Web Dev Certification</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Issued by: MMCY Tech</p>
+                        <a href="/assets/Surafel Zewdu - Full Stack Web Dev Certificate.pdf" download class="inline-block bg-gradient-to-r from-primary to-secondary text-white px-6 py-2 rounded-full hover:from-secondary hover:to-accent transition-all duration-300">
+                            <i class="fas fa-download mr-2"></i>Download
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
+    </section>
 
-        <!-- Python Django -->
-        <div class="border dark:border-gray-700 rounded-lg">
-            <button onclick="toggleSkill('django-content')" class="w-full p-4 flex justify-between items-center">
-                <span class="font-semibold"><i class="fab fa-python mr-2"></i> Python Django</span>
-                <i class="fas fa-chevron-down"></i>
-            </button>
-            <div id="django-content" class="hidden p-4 border-t dark:border-gray-700">
-                <ul class="list-disc pl-5 space-y-2">
-                    <li>MVC (Model-View-Template) Architecture</li>
-                    <li>ORM (Object-Relational Mapping)</li>
-                    <li>Authentication & Authorization</li>
-                    <li>REST API Development (Django Rest Framework)</li>
-                    <li>Database Integration (PostgreSQL, MySQL, SQLite)</li>
-                </ul>
-            </div>
-        </div>
-            
-            <!-- Flutter -->
-            <div class="border dark:border-gray-700 rounded-lg">
-                <button onclick="toggleSkill('flutter-content')" class="w-full p-4 flex justify-between items-center">
-                    <span class="font-semibold"><i class="fas fa-mobile-alt mr-2"></i>  Flutter</span>
-                    <i class="fas fa-chevron-down"></i>
-                </button>
-                <div id="flutter-content" class="hidden p-4 border-t dark:border-gray-700">
-                    <ul class="list-disc pl-5 space-y-2">
-                        <li>Cross-Platform Development</li>
-                        <li>State Management</li>
-                        <li>Package Management</li>
-                        <li>REST APIs</li>
-                        <li>Responsive Layouts</li>
-                        <li>Rest API Integration</li>
-                    </ul>
+    <!-- Enhanced Contact Section -->
+    <section id="contact" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-12 text-center gradient-text">
+                <i class="fas fa-paper-plane mr-3"></i>Let's Connect
+            </h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <p class="text-xl text-gray-600 dark:text-gray-400">
+                        Ready to bring your ideas to life? Let's discuss your next project!
+                    </p>
                 </div>
-            </div>
-
-            <!-- Node.js -->
-            <div class="border dark:border-gray-700 rounded-lg">
-                <button onclick="toggleSkill('nodejs-content')" class="w-full p-4 flex justify-between items-center">
-                    <span class="font-semibold"><i class="fab fa-node-js mr-2"></i> Node.js (Express) & MongoDB</span>
-                    <i class="fas fa-chevron-down"></i>
-                </button>
-                <div id="nodejs-content" class="hidden p-4 border-t dark:border-gray-700">
-                    <ul class="list-disc pl-5 space-y-2">
-                        <li>RESTful API Development</li>
-                        <li>Database Integration</li>
-                        <li>Authentication & Authorization</li>
-                        <li>Middleware Development</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- HTML, CSS, JS -->
-            <div class="border dark:border-gray-700 rounded-lg">
-                <button onclick="toggleSkill('web-content')" class="w-full p-4 flex justify-between items-center">
-                    <span class="font-semibold"><i class="fas fa-code mr-2"></i> HTML, CSS, JS (ES6)</span>
-                    <i class="fas fa-chevron-down"></i>
-                </button>
-                <div id="web-content" class="hidden p-4 border-t dark:border-gray-700">
-                    <ul class="list-disc pl-5 space-y-2">
-                        <li>Structured documents using HTML</li>
-                        <li>DOM real-time manipulation</li>
-                        <li>Event handling responsive UIs</li>
-                        <li>Responsive design with media queries</li>
-                        <li>CSS animations and transitions</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- ASP.NET MVC -->
-            <div class="border dark:border-gray-700 rounded-lg">
-                <button onclick="toggleSkill('asp-content')" class="w-full p-4 flex justify-between items-center">
-                    <span class="font-semibold"><i class="fas fa-laptop-code mr-2"></i> ASP.NET MVC</span>
-                    <i class="fas fa-chevron-down"></i>
-                </button>
-                <div id="asp-content" class="hidden p-4 border-t dark:border-gray-700">
-                    <ul class="list-disc pl-5 space-y-2">
-                        <li>MVC (Model-View-Controller) Architecture</li>
-                        <li>Entity Framework</li>
-                        <li>Views and Razor Syntax</li>
-                        <li>ASP.NET Core's middleware pipelining</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Databases -->
-            <div class="border dark:border-gray-700 rounded-lg">
-                <button onclick="toggleSkill('db-content')" class="w-full p-4 flex justify-between items-center">
-                    <span class="font-semibold"><i class="fas fa-database mr-2"></i> SQL Server & MySQL</span>
-                    <i class="fas fa-chevron-down"></i>
-                </button>
-                <div id="db-content" class="hidden p-4 border-t dark:border-gray-700">
-                    <ul class="list-disc pl-5 space-y-2">
-                        <li>SQL (Structured Query Language)</li>
-                        <li>Relationships (1:1, 1:M, N:M)</li>
-                        <li>Triggers and Procedures</li>
-                        <li>Design normalized database schemas</li>
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-
-    <!-- Certificates Section -->
-    <section class="pt-24 pb-12 container mx-auto px-4">
-        <h1 class="text-3xl font-bold mb-8 text-center">My Certificates</h1>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Certificate Item -->
-            <div class="bg-gray-50 dark:bg-gray-800 rounded-lg overflow-hidden shadow-md">
-                    <!-- Image with Fancybox -->
-                <a href="assets/cert1.png" data-fancybox="certificates" data-caption="Web Development Certification">
-                    <img src="assets/cert1.png" alt="Certificate 1" class="w-full h-48 object-cover cursor-pointer">
-                </a>
                 
-                  <div class="p-4">
-                    <h3 class="text-xl font-semibold mb-2">Full Stack - Web Dev Certification</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Issued by: MMCY Tech </p>
-                    <a href="/assets/Surafel Zewdu - Full Stack Web Dev Certificate.pdf" download class="inline-block bg-primary text-white px-4 py-2 rounded-full hover:bg-blue-600 transition-colors">
-                        <i class="fas fa-download mr-2"></i>Download
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <a href="mailto:surafelzewdu2018@gmail.com" target="_blank" class="glass-effect p-6 rounded-xl hover-lift flex flex-col items-center text-center group">
+                        <div class="w-16 h-16 bg-gradient-to-r from-red-500 to-pink-500 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-envelope text-white text-2xl"></i>
+                        </div>
+                        <h3 class="font-semibold mb-2">Email</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">surafelzewdu2018@gmail.com</p>
+                    </a>
+                    
+                    <a href="https://t.me/Zufan47" target="_blank" class="glass-effect p-6 rounded-xl hover-lift flex flex-col items-center text-center group">
+                        <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fab fa-telegram text-white text-2xl"></i>
+                        </div>
+                        <h3 class="font-semibold mb-2">Telegram</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">@Zufan47</p>
+                    </a>
+                    
+                    <a href="tel:+251965651110" target="_blank" class="glass-effect p-6 rounded-xl hover-lift flex flex-col items-center text-center group">
+                        <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-phone text-white text-2xl"></i>
+                        </div>
+                        <h3 class="font-semibold mb-2">Phone</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">+251965651110</p>
+                    </a>
+                    
+                    <a href="https://github.com/surafel-47" target="_blank" class="glass-effect p-6 rounded-xl hover-lift flex flex-col items-center text-center group">
+                        <div class="w-16 h-16 bg-gradient-to-r from-gray-700 to-gray-900 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fab fa-github text-white text-2xl"></i>
+                        </div>
+                        <h3 class="font-semibold mb-2">GitHub</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">@surafel-47</p>
+                    </a>
+                    
+                    <a href="https://www.linkedin.com/in/surafel-zewdu-0ba88b242/" target="_blank" class="glass-effect p-6 rounded-xl hover-lift flex flex-col items-center text-center group">
+                        <div class="w-16 h-16 bg-gradient-to-r from-blue-600 to-blue-800 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fab fa-linkedin text-white text-2xl"></i>
+                        </div>
+                        <h3 class="font-semibold mb-2">LinkedIn</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">Surafel Zewdu</p>
                     </a>
                 </div>
             </div>
-
-            <!-- Repeat Certificate Item for more certificates -->
-
         </div>
-
     </section>
 
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-12 bg-gray-50 dark:bg-gray-800">
+    <!-- Enhanced Footer -->
+    <footer class="py-12 bg-gradient-to-r from-gray-900 to-black text-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-8 text-center">Contact Me</h2>
-            <div class="max-w-md mx-auto grid sm:grid-cols-2 grid-cols-1 gap-x-20 gap-y-6">
-                <a href="mailto:surafelzewdu2018@gmail.com" target="_blank"  class="flex items-center gap-3 hover:text-primary">
-                    <i class="fas fa-envelope text-xl"></i>
-                    <span>surafelzewdu2018@gmail.com</span>
-                </a>
-                <a href="https://t.me/Zufan47"target="_blank"   class="flex items-center gap-3 hover:text-primary">
-                    <i class="fab fa-telegram text-xl"></i>
-                    <span>@Zufan47</span>
-                </a>
-                <a href="tel:+251965651110" target="_blank"  class="flex items-center gap-3 hover:text-primary">
-                    <i class="fas fa-phone text-xl"></i>
-                    <span>+251965651110</span>
-                </a>
-                <a href="https://github.com/surafel-47" target="_blank"  class="flex items-center gap-3 hover:text-primary">
-                    <i class="fab fa-github text-xl"></i>
-                    <span>@surafel-47</span>
-                </a>
-                <a href="https://www.linkedin.com/in/surafel-zewdu-0ba88b242/" target="_blank" class="flex items-center gap-3 hover:text-primary">
-                    <i class="fab fa-linkedin text-xl"></i>
-                    <span>Surafel Zewdu</span>
-                </a>
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <!-- Brand -->
+                <div class="md:col-span-2">
+                    <h3 class="text-2xl font-bold gradient-text mb-4">
+                        <i class="fas fa-code mr-2"></i>Surafel Zewdu
+                    </h3>
+                    <p class="text-gray-400 mb-4">
+                        Passionate full-stack developer creating innovative solutions that make a difference. 
+                        Let's build something amazing together!
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="https://github.com/surafel-47" target="_blank" class="social-icon glass-effect p-3 rounded-full hover:bg-white/10">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/surafel-zewdu-0ba88b242/" target="_blank" class="social-icon glass-effect p-3 rounded-full hover:bg-white/10">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="https://t.me/Zufan47" target="_blank" class="social-icon glass-effect p-3 rounded-full hover:bg-white/10">
+                            <i class="fab fa-telegram text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-primary">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition-colors flex items-center gap-2"><i class="fas fa-home"></i>Home</a></li>
+                        <li><a href="#experience" class="text-gray-400 hover:text-white transition-colors flex items-center gap-2"><i class="fas fa-briefcase"></i>Experience</a></li>
+                        <li><a href="#skills" class="text-gray-400 hover:text-white transition-colors flex items-center gap-2"><i class="fas fa-cogs"></i>Skills</a></li>
+                        <li><a href="projects.html" class="text-gray-400 hover:text-white transition-colors flex items-center gap-2"><i class="fas fa-project-diagram"></i>Projects</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Services -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-secondary">Services</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-center gap-2"><i class="fas fa-globe"></i>Web Development</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-mobile-alt"></i>Mobile Apps</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-server"></i>Backend Development</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-database"></i>Database Design</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">
+                    &copy; <span id="current-year"></span> Surafel Zewdu. Crafted with <i class="fas fa-heart text-red-500"></i> and lots of ☕
+                </p>
+                <div class="flex items-center gap-4 text-gray-400">
+                    <span class="flex items-center gap-2">
+                        <i class="fas fa-map-marker-alt"></i>Addis Ababa, Ethiopia
+                    </span>
+                    <span class="flex items-center gap-2">
+                        <i class="fas fa-clock"></i>Available for freelance
+                    </span>
+                </div>
             </div>
         </div>
-    </section>
+    </footer>
 
-<!-- Footer -->
-<footer class="py-6 text-center border-t dark:border-gray-700">
-    <p>&copy; <span id="current-year"></span> Surafel Zewdu. All rights reserved.</p>
-</footer>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        document.getElementById("current-year").textContent = new Date().getFullYear();
-    });
-</script>
-
+    <!-- Particles.js Configuration -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("current-year").textContent = new Date().getFullYear();
+            
+            // Initialize Particles.js
+            particlesJS('particles-js', {
+                particles: {
+                    number: {
+                        value: 80,
+                        density: {
+                            enable: true,
+                            value_area: 800
+                        }
+                    },
+                    color: {
+                        value: ['#60A5FA', '#A78BFA', '#F472B6']
+                    },
+                    shape: {
+                        type: 'circle',
+                        stroke: {
+                            width: 0,
+                            color: '#000000'
+                        }
+                    },
+                    opacity: {
+                        value: 0.5,
+                        random: false,
+                        anim: {
+                            enable: false,
+                            speed: 1,
+                            opacity_min: 0.1,
+                            sync: false
+                        }
+                    },
+                    size: {
+                        value: 3,
+                        random: true,
+                        anim: {
+                            enable: false,
+                            speed: 40,
+                            size_min: 0.1,
+                            sync: false
+                        }
+                    },
+                    line_linked: {
+                        enable: true,
+                        distance: 150,
+                        color: '#60A5FA',
+                        opacity: 0.4,
+                        width: 1
+                    },
+                    move: {
+                        enable: true,
+                        speed: 6,
+                        direction: 'none',
+                        random: false,
+                        straight: false,
+                        out_mode: 'out',
+                        bounce: false,
+                        attract: {
+                            enable: false,
+                            rotateX: 600,
+                            rotateY: 1200
+                        }
+                    }
+                },
+                interactivity: {
+                    detect_on: 'canvas',
+                    events: {
+                        onhover: {
+                            enable: true,
+                            mode: 'repulse'
+                        },
+                        onclick: {
+                            enable: true,
+                            mode: 'push'
+                        },
+                        resize: true
+                    },
+                    modes: {
+                        grab: {
+                            distance: 400,
+                            line_linked: {
+                                opacity: 1
+                            }
+                        },
+                        bubble: {
+                            distance: 400,
+                            size: 40,
+                            duration: 2,
+                            opacity: 8,
+                            speed: 3
+                        },
+                        repulse: {
+                            distance: 200,
+                            duration: 0.4
+                        },
+                        push: {
+                            particles_nb: 4
+                        },
+                        remove: {
+                            particles_nb: 2
+                        }
+                    }
+                },
+                retina_detect: true
+            });
+        });
+    </script>
 </body>
 </html>
