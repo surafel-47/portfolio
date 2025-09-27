@@ -1,386 +1,397 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Surafel's Projects</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="index.css" />
-    <!-- Font Awesome CDN -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
 
-    <link rel="icon" href="favicon.png" type="image/png" />
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Surafel's Projects</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="index.css" />
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-    <!-- Swiper.js CDN for carousel -->
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/swiper/swiper-bundle.min.css"
-    />
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 
-    <style>
-      /* Enhanced animations and effects */
-      @keyframes float {
-        0%,
-        100% {
-          transform: translateY(0px);
-        }
-        50% {
-          transform: translateY(-10px);
-        }
+  <!-- Swiper.js CDN for carousel -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+  <style>
+    /* Enhanced animations and effects */
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0px);
       }
 
-      @keyframes glow {
-        0%,
-        100% {
-          box-shadow: 0 0 20px rgba(96, 165, 250, 0.3);
-        }
-        50% {
-          box-shadow: 0 0 40px rgba(96, 165, 250, 0.6);
-        }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    @keyframes glow {
+
+      0%,
+      100% {
+        box-shadow: 0 0 20px rgba(96, 165, 250, 0.3);
       }
 
-      @keyframes slideInUp {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+      50% {
+        box-shadow: 0 0 40px rgba(96, 165, 250, 0.6);
+      }
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
       }
 
-      .float-animation {
-        animation: float 4s ease-in-out infinite;
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
-      .glow-effect {
-        animation: glow 3s ease-in-out infinite;
-      }
-      .slide-in-up {
-        animation: slideInUp 0.6s ease-out forwards;
-      }
+    }
 
-      .gradient-text {
-        background: linear-gradient(135deg, #60a5fa, #a78bfa, #f472b6);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
+    .float-animation {
+      animation: float 4s ease-in-out infinite;
+    }
 
-      .glass-effect {
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-      }
+    .glow-effect {
+      animation: glow 3s ease-in-out infinite;
+    }
 
-      .dark .glass-effect {
-        background: rgba(0, 0, 0, 0.2);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-      }
+    .slide-in-up {
+      animation: slideInUp 0.6s ease-out forwards;
+    }
 
-      .hover-lift {
-        transition: all 0.3s ease;
-      }
+    .gradient-text {
+      background: linear-gradient(135deg, #60a5fa, #a78bfa, #f472b6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
 
-      .hover-lift:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-      }
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
 
-      .dark .hover-lift:hover {
-        box-shadow: 0 15px 35px rgba(96, 165, 250, 0.2);
-      }
+    .dark .glass-effect {
+      background: rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
 
-      .project-card {
-        transition: all 0.4s ease;
-        border-left: 4px solid transparent;
-      }
+    .hover-lift {
+      transition: all 0.3s ease;
+    }
 
-      .project-card:hover {
-        border-left-color: #60a5fa;
-        transform: translateX(10px);
-      }
+    .hover-lift:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    }
 
-      .category-btn {
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-      }
+    .dark .hover-lift:hover {
+      box-shadow: 0 15px 35px rgba(96, 165, 250, 0.2);
+    }
 
-      .category-btn::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          90deg,
+    .project-card {
+      transition: all 0.4s ease;
+      border-left: 4px solid transparent;
+    }
+
+    .project-card:hover {
+      border-left-color: #60a5fa;
+      transform: translateX(10px);
+    }
+
+    .category-btn {
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .category-btn::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg,
           transparent,
           rgba(255, 255, 255, 0.2),
-          transparent
-        );
-        transition: left 0.5s;
-      }
+          transparent);
+      transition: left 0.5s;
+    }
 
-      .category-btn:hover::before {
-        left: 100%;
-      }
+    .category-btn:hover::before {
+      left: 100%;
+    }
 
-      .category-btn.active {
-        background: linear-gradient(135deg, #60a5fa, #a78bfa);
-        transform: scale(1.05);
-      }
+    .category-btn.active {
+      background: linear-gradient(135deg, #60a5fa, #a78bfa);
+      transform: scale(1.05);
+    }
 
-      .social-icon {
-        transition: all 0.3s ease;
-      }
+    .social-icon {
+      transition: all 0.3s ease;
+    }
 
-      .social-icon:hover {
-        transform: scale(1.2) rotate(5deg);
-      }
+    .social-icon:hover {
+      transform: scale(1.2) rotate(5deg);
+    }
 
-      .stagger-animation {
-        opacity: 0;
-        transform: translateY(20px);
-        animation: slideInUp 0.6s ease-out forwards;
-      }
+    .stagger-animation {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideInUp 0.6s ease-out forwards;
+    }
 
-      .stagger-animation:nth-child(1) {
-        animation-delay: 0.1s;
-      }
-      .stagger-animation:nth-child(2) {
-        animation-delay: 0.2s;
-      }
-      .stagger-animation:nth-child(3) {
-        animation-delay: 0.3s;
-      }
-      .stagger-animation:nth-child(4) {
-        animation-delay: 0.4s;
-      }
-      .stagger-animation:nth-child(5) {
-        animation-delay: 0.5s;
-      }
+    .stagger-animation:nth-child(1) {
+      animation-delay: 0.1s;
+    }
 
-      /* Custom Swiper Styles */
-      .project-swiper {
-        border-radius: 12px;
-        overflow: hidden;
-      }
+    .stagger-animation:nth-child(2) {
+      animation-delay: 0.2s;
+    }
 
-      .project-swiper .swiper-slide {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: #f8f9fa;
-      }
+    .stagger-animation:nth-child(3) {
+      animation-delay: 0.3s;
+    }
 
-      .dark .project-swiper .swiper-slide {
-        background: #1f2937;
-      }
+    .stagger-animation:nth-child(4) {
+      animation-delay: 0.4s;
+    }
 
-      .project-swiper .swiper-slide img {
-        width: 100%;
-        height: 400px;
-        object-fit: contain;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: transform 0.3s ease;
-      }
+    .stagger-animation:nth-child(5) {
+      animation-delay: 0.5s;
+    }
 
-      .project-swiper .swiper-slide img:hover {
-        transform: scale(1.02);
-      }
+    /* Custom Swiper Styles */
+    .project-swiper {
+      border-radius: 12px;
+      overflow: hidden;
+    }
 
-      .project-swiper .swiper-button-next,
-      .project-swiper .swiper-button-prev {
-        color: #60a5fa;
-        background: rgba(255, 255, 255, 0.9);
-        width: 44px;
-        height: 44px;
-        border-radius: 50%;
-        margin-top: -22px;
-      }
+    .project-swiper .swiper-slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f8f9fa;
+    }
 
-      .dark .project-swiper .swiper-button-next,
-      .dark .project-swiper .swiper-button-prev {
-        background: rgba(0, 0, 0, 0.7);
-        color: #60a5fa;
-      }
+    .dark .project-swiper .swiper-slide {
+      background: #1f2937;
+    }
 
-      .project-swiper .swiper-button-next:after,
-      .project-swiper .swiper-button-prev:after {
-        font-size: 18px;
-        font-weight: bold;
-      }
+    .project-swiper .swiper-slide img {
+      width: 100%;
+      height: 400px;
+      object-fit: contain;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
 
-      .project-swiper .swiper-pagination-bullet {
-        background: #60a5fa;
-        opacity: 0.5;
-      }
+    .project-swiper .swiper-slide img:hover {
+      transform: scale(1.02);
+    }
 
-      .project-swiper .swiper-pagination-bullet-active {
-        opacity: 1;
-        background: #60a5fa;
-      }
+    .project-swiper .swiper-button-next,
+    .project-swiper .swiper-button-prev {
+      color: #60a5fa;
+      background: rgba(255, 255, 255, 0.9);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      margin-top: -22px;
+    }
 
-      /* Full Screen Modal Styles */
-      .fullscreen-modal {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.95);
-        z-index: 9999;
-        display: none;
-        align-items: center;
-        justify-content: center;
-      }
+    .dark .project-swiper .swiper-button-next,
+    .dark .project-swiper .swiper-button-prev {
+      background: rgba(0, 0, 0, 0.7);
+      color: #60a5fa;
+    }
 
-      .fullscreen-modal.active {
-        display: flex;
-      }
+    .project-swiper .swiper-button-next:after,
+    .project-swiper .swiper-button-prev:after {
+      font-size: 18px;
+      font-weight: bold;
+    }
 
-      .fullscreen-swiper {
-        width: 90%;
-        height: 90%;
-        max-width: 1200px;
-      }
+    .project-swiper .swiper-pagination-bullet {
+      background: #60a5fa;
+      opacity: 0.5;
+    }
 
-      .fullscreen-swiper .swiper-slide {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
+    .project-swiper .swiper-pagination-bullet-active {
+      opacity: 1;
+      background: #60a5fa;
+    }
 
-      .fullscreen-swiper .swiper-slide img {
-        max-width: 100%;
-        max-height: 100%;
-        object-fit: contain;
-        border-radius: 8px;
-      }
+    /* Full Screen Modal Styles */
+    .fullscreen-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
 
-      .fullscreen-swiper .swiper-button-next,
-      .fullscreen-swiper .swiper-button-prev {
-        color: white;
-        background: rgba(96, 165, 250, 0.8);
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-      }
+    .fullscreen-modal.active {
+      display: flex;
+    }
 
-      .fullscreen-swiper .swiper-button-next:after,
-      .fullscreen-swiper .swiper-button-prev:after {
-        font-size: 20px;
-      }
+    .fullscreen-swiper {
+      width: 90%;
+      height: 90%;
+      max-width: 1200px;
+    }
 
-      .fullscreen-swiper .swiper-pagination-bullet {
-        background: white;
-        opacity: 0.5;
-      }
+    .fullscreen-swiper .swiper-slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-      .fullscreen-swiper .swiper-pagination-bullet-active {
-        opacity: 1;
-      }
+    .fullscreen-swiper .swiper-slide img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 8px;
+    }
 
-      .modal-close {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        color: white;
-        font-size: 30px;
-        cursor: pointer;
-        z-index: 10000;
-        background: rgba(96, 165, 250, 0.8);
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.3s ease;
-      }
+    .fullscreen-swiper .swiper-button-next,
+    .fullscreen-swiper .swiper-button-prev {
+      color: white;
+      background: rgba(96, 165, 250, 0.8);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
 
-      .modal-close:hover {
-        background: rgba(96, 165, 250, 1);
-        transform: scale(1.1);
-      }
+    .fullscreen-swiper .swiper-button-next:after,
+    .fullscreen-swiper .swiper-button-prev:after {
+      font-size: 20px;
+    }
 
-      .expand-btn {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background: rgba(96, 165, 250, 0.9);
-        color: white;
-        border: none;
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.3s ease;
-        z-index: 10;
-      }
+    .fullscreen-swiper .swiper-pagination-bullet {
+      background: white;
+      opacity: 0.5;
+    }
 
-      .expand-btn:hover {
-        background: rgba(96, 165, 250, 1);
-        transform: scale(1.1);
-      }
-    </style>
+    .fullscreen-swiper .swiper-pagination-bullet-active {
+      opacity: 1;
+    }
 
-    <script>
-      // Tailwind Configuration
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              primary: "#60A5FA",
-              secondary: "#A78BFA",
-              accent: "#F472B6",
-            },
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      color: white;
+      font-size: 30px;
+      cursor: pointer;
+      z-index: 10000;
+      background: rgba(96, 165, 250, 0.8);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .modal-close:hover {
+      background: rgba(96, 165, 250, 1);
+      transform: scale(1.1);
+    }
+
+    .expand-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(96, 165, 250, 0.9);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      z-index: 10;
+    }
+
+    .expand-btn:hover {
+      background: rgba(96, 165, 250, 1);
+      transform: scale(1.1);
+    }
+  </style>
+
+  <script>
+    // Tailwind Configuration
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#60A5FA",
+            secondary: "#A78BFA",
+            accent: "#F472B6",
           },
         },
-      };
+      },
+    };
 
-      // Dark mode toggle function
-      function toggleDarkMode() {
-        document.documentElement.classList.toggle("dark");
-        localStorage.theme = document.documentElement.classList.contains("dark")
-          ? "dark"
-          : "light";
-      }
+    // Dark mode toggle function
+    function toggleDarkMode() {
+      document.documentElement.classList.toggle("dark");
+      localStorage.theme = document.documentElement.classList.contains("dark")
+        ? "dark"
+        : "light";
+    }
 
-      // Initialize dark mode based on localStorage or system preference
-      if (
-        localStorage.theme === "dark" ||
-        (!("theme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
-      ) {
-        document.documentElement.classList.add("dark");
-      }
+    // Initialize dark mode based on localStorage or system preference
+    if (
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      document.documentElement.classList.add("dark");
+    }
 
-      // Enhanced function to show projects based on category
-      function showProjects(category) {
-        // Remove active class from all buttons
-        document.querySelectorAll(".category-btn").forEach((btn) => {
-          btn.classList.remove("active");
+    // Enhanced function to show projects based on category
+    function showProjects(category) {
+      // Remove active class from all buttons
+      document.querySelectorAll(".category-btn").forEach((btn) => {
+        btn.classList.remove("active");
+      });
+
+      // Add active class to clicked button
+      event.target.classList.add("active");
+
+      if (category === 'all') {
+        // Show all project categories
+        document.querySelectorAll(".project-category").forEach((el) => {
+          el.classList.remove("hidden");
+          el.classList.add("slide-in-up");
         });
-
-        // Add active class to clicked button
-        event.target.classList.add("active");
-
-        // Hide all project categories
+      } else {
+        // Hide all project categories first
         document.querySelectorAll(".project-category").forEach((el) => {
           el.classList.add("hidden");
           el.classList.remove("slide-in-up");
@@ -390,550 +401,119 @@
         const targetCategory = document.getElementById(category + "-projects");
         targetCategory.classList.remove("hidden");
         targetCategory.classList.add("slide-in-up");
-
-        // Add stagger animation to project cards
-        setTimeout(() => {
-          targetCategory
-            .querySelectorAll(".project-card")
-            .forEach((card, index) => {
-              card.style.animationDelay = `${index * 0.1}s`;
-              card.classList.add("stagger-animation");
-            });
-        }, 100);
       }
 
-      // Full screen modal functions
-      function openFullscreen(images, startIndex = 0) {
-        const modal = document.getElementById("fullscreen-modal");
-        const swiperWrapper = modal.querySelector(".swiper-wrapper");
-
-        // Clear existing slides
-        swiperWrapper.innerHTML = "";
-
-        // Add new slides
-        images.forEach((image) => {
-          const slide = document.createElement("div");
-          slide.className = "swiper-slide";
-          slide.innerHTML = `<img src="${image}" alt="Project Screenshot">`;
-          swiperWrapper.appendChild(slide);
+      // Add stagger animation to visible project cards
+      setTimeout(() => {
+        document.querySelectorAll(".project-category:not(.hidden) .project-card").forEach((card, index) => {
+          card.style.animationDelay = `${index * 0.1}s`;
+          card.classList.add("stagger-animation");
         });
+      }, 100);
+    }
 
-        // Show modal
-        modal.classList.add("active");
+    function showAllProjects() {
+      // Show all project categories
+      document.querySelectorAll(".project-category").forEach((el) => {
+        el.classList.remove("hidden");
+        el.classList.add("slide-in-up");
+      });
 
-        // Initialize or update swiper
-        if (window.fullscreenSwiper) {
-          window.fullscreenSwiper.destroy();
-        }
-
-        window.fullscreenSwiper = new Swiper(".fullscreen-swiper", {
-          loop: images.length > 1,
-          initialSlide: startIndex,
-          navigation: {
-            nextEl: ".fullscreen-swiper .swiper-button-next",
-            prevEl: ".fullscreen-swiper .swiper-button-prev",
-          },
-          pagination: {
-            el: ".fullscreen-swiper .swiper-pagination",
-            clickable: true,
-          },
-          keyboard: {
-            enabled: true,
-          },
+      // Add stagger animation to all project cards
+      setTimeout(() => {
+        document.querySelectorAll(".project-card").forEach((card, index) => {
+          card.style.animationDelay = `${index * 0.1}s`;
+          card.classList.add("stagger-animation");
         });
-      }
+      }, 100);
+    }
 
-      function closeFullscreen() {
-        document.getElementById("fullscreen-modal").classList.remove("active");
-      }
-
-      // Close modal on escape key
-      document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape") {
-          closeFullscreen();
-        }
-      });
-    </script>
-    <script src="projects.js"></script>
-  </head>
-  <body
-    class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-800 dark:text-gray-200"
-  >
-    <!-- Enhanced Header with Glass Effect -->
-    <header
-      class="fixed w-full top-0 glass-effect z-50 border-b border-white/20"
-    >
-      <nav
-        class="container mx-auto px-4 py-4 flex justify-between items-center"
-      >
-        <div class="flex gap-8">
-          <h1 class="text-xl font-bold gradient-text">
-            <a href="index.html#home" class="flex items-center gap-2">
-              <i class="fas fa-code"></i>Surafel Zewdu
-            </a>
-          </h1>
-          <ul class="hidden md:flex space-x-6 pt-1">
-            <li>
-              <a
-                href="index.html#experience"
-                class="hover:text-primary transition-colors flex items-center gap-2"
-              >
-                <i class="fas fa-briefcase"></i>Experience
-              </a>
-            </li>
-            <li>
-              <a
-                href="index.html#skills"
-                class="hover:text-primary transition-colors flex items-center gap-2"
-              >
-                <i class="fas fa-cogs"></i>Skills
-              </a>
-            </li>
-            <li>
-              <a
-                href="index.html#contact"
-                class="hover:text-primary transition-colors flex items-center gap-2"
-              >
-                <i class="fas fa-envelope"></i>Contact
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div class="flex items-center gap-6">
-          <ul class="hidden md:flex space-x-6">
-            <li>
-              <a
-                href="projects.html"
-                class="inline-block bg-gradient-to-r from-primary to-secondary text-white px-6 py-2 rounded-full hover:from-secondary hover:to-accent transition-all duration-300 glow-effect"
-              >
-                <i class="fas fa-project-diagram mr-2"></i>Projects
-              </a>
-            </li>
-          </ul>
-          <button
-            onclick="toggleDarkMode()"
-            class="p-2 rounded-lg glass-effect hover:bg-white/20 dark:hover:bg-black/20 transition-all"
-          >
-            <i class="fas fa-moon dark:hidden text-yellow-500"></i>
-            <i class="fas fa-sun hidden dark:block text-yellow-400"></i>
-          </button>
-          <!-- Mobile Menu Button -->
-          <button
-            class="md:hidden glass-effect p-2 rounded-lg"
-            onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"
-          >
-            <i class="fas fa-bars"></i>
-          </button>
-        </div>
-      </nav>
-      <!-- Enhanced Mobile Menu -->
-      <div
-        id="mobile-menu"
-        class="hidden md:hidden px-4 py-2 glass-effect border-t border-white/20"
-      >
-        <ul class="space-y-2">
-          <li>
-            <a
-              href="index.html#home"
-              class="block py-2 hover:text-primary transition-colors flex items-center gap-2"
-              ><i class="fas fa-home"></i>Home</a
-            >
-          </li>
-          <li>
-            <a
-              href="projects.html"
-              class="block py-2 hover:text-primary transition-colors flex items-center gap-2"
-              ><i class="fas fa-project-diagram"></i>Projects</a
-            >
-          </li>
-          <li>
-            <a
-              href="index.html#experience"
-              class="block py-2 hover:text-primary transition-colors flex items-center gap-2"
-              ><i class="fas fa-briefcase"></i>Experience</a
-            >
-          </li>
-          <li>
-            <a
-              href="index.html#skills"
-              class="block py-2 hover:text-primary transition-colors flex items-center gap-2"
-              ><i class="fas fa-cogs"></i>Skills</a
-            >
-          </li>
-          <li>
-            <a
-              href="index.html#contact"
-              class="block py-2 hover:text-primary transition-colors flex items-center gap-2"
-              ><i class="fas fa-envelope"></i>Contact</a
-            >
-          </li>
-        </ul>
-      </div>
-    </header>
-
-    <!-- Enhanced Hero Section -->
-    <section class="pt-32 pb-16 container mx-auto px-4 text-center">
-      <div class="max-w-4xl mx-auto">
-        <h1 class="text-5xl font-bold mb-6 gradient-text float-animation">
-          <i class="fas fa-rocket mr-4"></i>My Projects
-        </h1>
-        <p
-          class="text-xl text-gray-600 dark:text-gray-400 mb-8 leading-relaxed"
-        >
-          Explore my diverse portfolio of web applications, mobile apps, and
-          software solutions. Each project represents a unique challenge solved
-          with creativity and technical expertise.
-        </p>
-
-        <!-- Enhanced Stats -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-          <div class="glass-effect p-6 rounded-xl hover-lift">
-            <div class="text-3xl font-bold gradient-text mb-2">15+</div>
-            <div class="text-sm text-gray-600 dark:text-gray-400">
-              Total Projects
-            </div>
-          </div>
-          <div class="glass-effect p-6 rounded-xl hover-lift">
-            <div class="text-3xl font-bold gradient-text mb-2">5</div>
-            <div class="text-sm text-gray-600 dark:text-gray-400">Web Apps</div>
-          </div>
-          <div class="glass-effect p-6 rounded-xl hover-lift">
-            <div class="text-3xl font-bold gradient-text mb-2">6</div>
-            <div class="text-sm text-gray-600 dark:text-gray-400">
-              Mobile Apps
-            </div>
-          </div>
-          <div class="glass-effect p-6 rounded-xl hover-lift">
-            <div class="text-3xl font-bold gradient-text mb-2">8+</div>
-            <div class="text-sm text-gray-600 dark:text-gray-400">
-              Technologies
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Enhanced Project Categories -->
-    <section class="pb-12 container mx-auto px-4">
-      <div class="flex flex-wrap justify-center gap-4 mb-12">
-        <button
-          onclick="showProjects('website')"
-          class="category-btn active flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white rounded-full hover:from-secondary hover:to-accent transition-all duration-300 text-lg font-semibold"
-        >
-          <i class="fas fa-globe text-xl"></i>
-          <span>Web Applications</span>
-          <span class="bg-white/20 px-2 py-1 rounded-full text-sm">5</span>
-        </button>
-        <button
-          onclick="showProjects('mobile')"
-          class="category-btn flex items-center gap-3 px-8 py-4 glass-effect rounded-full hover:bg-white/20 dark:hover:bg-black/20 transition-all duration-300 text-lg font-semibold"
-        >
-          <i class="fas fa-mobile-alt text-xl text-primary"></i>
-          <span>Mobile Apps</span>
-          <span class="bg-primary/20 px-2 py-1 rounded-full text-sm">6</span>
-        </button>
-        <button
-          onclick="showProjects('csharp')"
-          class="category-btn flex items-center gap-3 px-8 py-4 glass-effect rounded-full hover:bg-white/20 dark:hover:bg-black/20 transition-all duration-300 text-lg font-semibold"
-        >
-          <i class="fab fa-microsoft text-xl text-secondary"></i>
-          <span>Desktop Apps</span>
-          <span class="bg-secondary/20 px-2 py-1 rounded-full text-sm">1</span>
-        </button>
-        <button
-          onclick="showProjects('cpp')"
-          class="category-btn flex items-center gap-3 px-8 py-4 glass-effect rounded-full hover:bg-white/20 dark:hover:bg-black/20 transition-all duration-300 text-lg font-semibold"
-        >
-          <i class="fas fa-gamepad text-xl text-accent"></i>
-          <span>Games & More</span>
-          <span class="bg-accent/20 px-2 py-1 rounded-full text-sm">1</span>
-        </button>
-      </div>
-    </section>
-
-    <!-- Enhanced Project Lists -->
-    <section class="container mx-auto px-4 pb-16">
-      <!-- Website Projects -->
-      <div id="website-projects" class="project-category">
-        <div class="text-center mb-12">
-          <h2 class="text-4xl font-bold mb-4 gradient-text">
-            <i class="fas fa-globe mr-3"></i>Web Applications
-          </h2>
-          <p class="text-lg text-gray-600 dark:text-gray-400">
-            Full-stack web applications built with modern technologies
-          </p>
-        </div>
-        <!-- Projects will be dynamically inserted here -->
-      </div>
-
-      <!-- Mobile Projects -->
-      <div id="mobile-projects" class="project-category hidden">
-        <div class="text-center mb-12">
-          <h2 class="text-4xl font-bold mb-4 gradient-text">
-            <i class="fas fa-mobile-alt mr-3"></i>Mobile Applications
-          </h2>
-          <p class="text-lg text-gray-600 dark:text-gray-400">
-            Cross-platform mobile apps built with Flutter and React Native
-          </p>
-        </div>
-        <!-- Projects will be dynamically inserted here -->
-      </div>
-
-      <!-- C# Projects -->
-      <div id="csharp-projects" class="project-category hidden">
-        <div class="text-center mb-12">
-          <h2 class="text-4xl font-bold mb-4 gradient-text">
-            <i class="fab fa-microsoft mr-3"></i>Desktop Applications
-          </h2>
-          <p class="text-lg text-gray-600 dark:text-gray-400">
-            Windows desktop applications built with C# and .NET
-          </p>
-        </div>
-        <!-- Projects will be dynamically inserted here -->
-      </div>
-
-      <!-- Games Projects -->
-      <div id="cpp-projects" class="project-category hidden">
-        <div class="text-center mb-12">
-          <h2 class="text-4xl font-bold mb-4 gradient-text">
-            <i class="fas fa-gamepad mr-3"></i>Games & Interactive Projects
-          </h2>
-          <p class="text-lg text-gray-600 dark:text-gray-400">
-            Interactive games and creative projects
-          </p>
-        </div>
-        <!-- Projects will be dynamically inserted here -->
-      </div>
-    </section>
-
-    <!-- Full Screen Modal -->
-    <div id="fullscreen-modal" class="fullscreen-modal">
-      <div class="modal-close" onclick="closeFullscreen()">
-        <i class="fas fa-times"></i>
-      </div>
-      <div class="swiper fullscreen-swiper">
-        <div class="swiper-wrapper"></div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-pagination"></div>
-      </div>
-    </div>
-
-    <!-- Enhanced Footer -->
-    <footer class="py-12 bg-gradient-to-r from-gray-900 to-black text-white">
-      <div class="container mx-auto px-4">
-        <div class="grid md:grid-cols-4 gap-8 mb-8">
-          <!-- Brand -->
-          <div class="md:col-span-2">
-            <h3 class="text-2xl font-bold gradient-text mb-4">
-              <i class="fas fa-code mr-2"></i>Surafel Zewdu
-            </h3>
-            <p class="text-gray-400 mb-4">
-              Passionate full-stack developer creating innovative solutions that
-              make a difference. Let's build something amazing together!
-            </p>
-            <div class="flex gap-4">
-              <a
-                href="https://github.com/surafel-47"
-                target="_blank"
-                class="social-icon glass-effect p-3 rounded-full hover:bg-white/10"
-              >
-                <i class="fab fa-github text-xl"></i>
-              </a>
-              <a
-                href="https://www.linkedin.com/in/surafel-zewdu-0ba88b242/"
-                target="_blank"
-                class="social-icon glass-effect p-3 rounded-full hover:bg-white/10"
-              >
-                <i class="fab fa-linkedin text-xl"></i>
-              </a>
-              <a
-                href="https://t.me/Zufan47"
-                target="_blank"
-                class="social-icon glass-effect p-3 rounded-full hover:bg-white/10"
-              >
-                <i class="fab fa-telegram text-xl"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- Quick Links -->
-          <div>
-            <h4 class="text-lg font-semibold mb-4 text-primary">Quick Links</h4>
-            <ul class="space-y-2">
-              <li>
-                <a
-                  href="index.html#home"
-                  class="text-gray-400 hover:text-white transition-colors flex items-center gap-2"
-                  ><i class="fas fa-home"></i>Home</a
-                >
-              </li>
-              <li>
-                <a
-                  href="index.html#experience"
-                  class="text-gray-400 hover:text-white transition-colors flex items-center gap-2"
-                  ><i class="fas fa-briefcase"></i>Experience</a
-                >
-              </li>
-              <li>
-                <a
-                  href="index.html#skills"
-                  class="text-gray-400 hover:text-white transition-colors flex items-center gap-2"
-                  ><i class="fas fa-cogs"></i>Skills</a
-                >
-              </li>
-              <li>
-                <a
-                  href="projects.html"
-                  class="text-gray-400 hover:text-white transition-colors flex items-center gap-2"
-                  ><i class="fas fa-project-diagram"></i>Projects</a
-                >
-              </li>
-            </ul>
-          </div>
-
-          <!-- Project Categories -->
-          <div>
-            <h4 class="text-lg font-semibold mb-4 text-secondary">
-              Project Types
-            </h4>
-            <ul class="space-y-2 text-gray-400">
-              <li class="flex items-center gap-2">
-                <i class="fas fa-globe"></i>Web Applications
-              </li>
-              <li class="flex items-center gap-2">
-                <i class="fas fa-mobile-alt"></i>Mobile Apps
-              </li>
-              <li class="flex items-center gap-2">
-                <i class="fab fa-microsoft"></i>Desktop Apps
-              </li>
-              <li class="flex items-center gap-2">
-                <i class="fas fa-gamepad"></i>Games & Interactive
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div
-          class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center"
-        >
-          <p class="text-gray-400 mb-4 md:mb-0">
-            &copy; <span id="current-year"></span> Surafel Zewdu. Crafted with
-            <i class="fas fa-heart text-red-500"></i> and lots of ☕
-          </p>
-          <div class="flex items-center gap-4 text-gray-400">
-            <span class="flex items-center gap-2">
-              <i class="fas fa-map-marker-alt"></i>Addis Ababa, Ethiopia
-            </span>
-            <span class="flex items-center gap-2">
-              <i class="fas fa-clock"></i>Available for freelance
-            </span>
-          </div>
-        </div>
-      </div>
-    </footer>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        document.getElementById("current-year").textContent =
-          new Date().getFullYear();
-      });
-    </script>
-
-    <script>
-      function generateProjectHTML(project, projectIndex) {
-        // Enhanced HTML structure for each project with carousel
-        let projectHTML = `
-                <div class="project-card mb-16 glass-effect rounded-2xl p-8 hover-lift">
-                    <div class="flex flex-col lg:flex-row gap-8">
+    function generateProjectHTML(project, projectIndex) {
+      // Enhanced HTML structure for each project with carousel
+      let projectHTML = `
+                <div class="project-card mb-16 glass-effect rounded-2xl p-8 hover-lift" id="${project.title}">
+                    <div class="flex flex-col lg:flex-row gap-8" >
                         <!-- Project Info -->
                         <div class="lg:w-1/2">
-                            <h3 class="text-2xl font-bold mb-4 gradient-text">${
-                              project.title
-                            }</h3>
-                            <p class="mb-6 text-gray-600 dark:text-gray-400 leading-relaxed text-lg">${
-                              project.description
-                            }</p>
+                            <h3 class="text-2xl font-bold mb-4 gradient-text">${project.title
+        }</h3>
+                            <p class="mb-6 text-gray-600 dark:text-gray-400 leading-relaxed text-lg">${project.description
+        }</p>
                             
                             <!-- Tech Stack Indicators -->
                             <div class="flex flex-wrap gap-2 mb-6">
-                                ${getTechStack(project.title)
-                                  .map(
-                                    (tech) => `
+                                ${project.tech_stack
+          .map(
+            (tech) => `
                                     <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm font-medium">
                                         ${tech}
                                     </span>
                                 `
-                                  )
-                                  .join("")}
+          )
+          .join("")}
                             </div>
                             
                             <!-- Action Buttons -->
                             <div class="flex flex-wrap gap-4">
-                                ${
-                                  project.githubLink
-                                    ? `
+                                ${project.githubLink
+          ? `
                                     <a href="${project.githubLink}" target="_blank" class="inline-flex items-center gap-2 bg-gradient-to-r from-gray-700 to-gray-900 text-white px-6 py-3 rounded-full hover:from-gray-600 hover:to-gray-800 transition-all duration-300">
                                         <i class="fab fa-github"></i>View Code
                                     </a>
                                 `
-                                    : ""
-                                }
-                                ${
-                                  project.liveLink
-                                    ? `
+          : ""
+        }
+                                ${project.liveLink
+          ? `
                                     <a href="${project.liveLink}" target="_blank" class="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-secondary text-white px-6 py-3 rounded-full hover:from-secondary hover:to-accent transition-all duration-300 glow-effect">
                                         <i class="fas fa-external-link-alt"></i>Live Demo
                                     </a>
                                 `
-                                    : ""
-                                }
+          : ""
+        }
                             </div>
                         </div>
                         
                         <!-- Project Media Carousel -->
                         <div class="lg:w-1/2">
-                            ${
-                              project.media && project.media.length > 0
-                                ? `
+                            ${project.media && project.media.length > 0
+          ? `
                                 <div class="relative">
                                     <button class="expand-btn" onclick="openFullscreen(${JSON.stringify(
-                                      project.media
-                                    ).replace(/"/g, "&quot;")}, 0)">
+            project.media
+          ).replace(/"/g, "&quot;")}, 0)">
                                         <i class="fas fa-expand"></i>
                                     </button>
                                     <div class="swiper project-swiper project-swiper-${projectIndex}">
                                         <div class="swiper-wrapper">
                                             ${project.media
-                                              .map(
-                                                (media, index) => `
+            .map(
+              (media, index) => `
                                                 <div class="swiper-slide">
-                                                    <img src="${media}" alt="Project Screenshot ${
-                                                  index + 1
-                                                }" onclick="openFullscreen(${JSON.stringify(
-                                                  project.media
-                                                ).replace(
-                                                  /"/g,
-                                                  "&quot;"
-                                                )}, ${index})">
+                                                    <img src="${media}" alt="Project Screenshot ${index + 1
+                }" onclick="openFullscreen(${JSON.stringify(
+                  project.media
+                ).replace(
+                  /"/g,
+                  "&quot;"
+                )}, ${index})">
                                                 </div>
                                             `
-                                              )
-                                              .join("")}
+            )
+            .join("")}
                                         </div>
-                                        ${
-                                          project.media.length > 1
-                                            ? `
+                                        ${project.media.length > 1
+            ? `
                                             <div class="swiper-button-next"></div>
                                             <div class="swiper-button-prev"></div>
                                             <div class="swiper-pagination"></div>
                                         `
-                                            : ""
-                                        }
+            : ""
+          }
                                     </div>
                                 </div>
                             `
-                                : `
+          : `
                                 <div class="flex items-center justify-center h-96 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-xl">
                                     <div class="text-center">
                                         <i class="fas fa-image text-6xl text-primary/50 mb-4"></i>
@@ -941,108 +521,408 @@
                                     </div>
                                 </div>
                             `
-                            }
+        }
                         </div>
                     </div>
                 </div>
             `;
-        return projectHTML;
-      }
+      return projectHTML;
+    }
 
-      // Function to determine tech stack based on project title/description
-      function getTechStack(title) {
-        const techMap = {
-          "Ethiopian Road Authority": [
-            "Python",
-            "Django",
-            "PostgreSQL",
-            "HTML/CSS",
-          ],
-          "Et Legal Chatbot": ["Python", "Node.js", "Vue.js", "AI/ML"],
-          "Tesde Social Media": ["Vue.js", "Node.js", "MongoDB", "JWT"],
-          "Addis Times Blog": ["Vue.js", "Express", "MongoDB", "Tailwind"],
-          "Mercury Shopping": ["ASP.NET", "C#", "SQL Server", "MVC"],
-          "Crooze Ride": ["React Native", "Flutter", "Mobile"],
-          "Facial Recognition": ["Flutter", "AI/ML", "Python"],
-          "Wallpaper App": ["Flutter", "API", "State Management"],
-          "Weather App": ["Flutter", "API", "Provider"],
-          Calculator: ["Flutter", "State Management"],
-          "Zues Supermarket": ["C#", "WinForms", "SQL Server"],
-        };
+    function loadProjects(category) {
+      const projectContainer = document.getElementById(
+        category + "-projects"
+      );
+      const existingProjects =
+        projectContainer.querySelector(".projects-grid");
 
-        for (let key in techMap) {
-          if (title.includes(key)) {
-            return techMap[key];
-          }
-        }
-        return ["Web Development", "Mobile", "Software"];
-      }
+      if (!existingProjects) {
+        const projectsGrid = document.createElement("div");
+        projectsGrid.className = "projects-grid space-y-8";
 
-      function loadProjects(category) {
-        const projectContainer = document.getElementById(
-          category + "-projects"
-        );
-        const existingProjects =
-          projectContainer.querySelector(".projects-grid");
+        projects[category].forEach((project, index) => {
+          const projectElement = document.createElement("div");
+          projectElement.innerHTML = generateProjectHTML(project, index);
+          projectElement.className = "stagger-animation";
+          projectElement.style.animationDelay = `${index * 0.1}s`;
+          projectsGrid.appendChild(projectElement);
+        });
 
-        if (!existingProjects) {
-          const projectsGrid = document.createElement("div");
-          projectsGrid.className = "projects-grid space-y-8";
+        projectContainer.appendChild(projectsGrid);
 
+        // Initialize Swiper for each project
+        setTimeout(() => {
           projects[category].forEach((project, index) => {
-            const projectElement = document.createElement("div");
-            projectElement.innerHTML = generateProjectHTML(project, index);
-            projectElement.className = "stagger-animation";
-            projectElement.style.animationDelay = `${index * 0.1}s`;
-            projectsGrid.appendChild(projectElement);
+            if (project.media && project.media.length > 0) {
+              new Swiper(`.project-swiper-${index}`, {
+                loop: project.media.length > 1,
+                autoplay:
+                  project.media.length > 1
+                    ? {
+                      delay: 4000,
+                      disableOnInteraction: false,
+                    }
+                    : false,
+                navigation:
+                  project.media.length > 1
+                    ? {
+                      nextEl: `.project-swiper-${index} .swiper-button-next`,
+                      prevEl: `.project-swiper-${index} .swiper-button-prev`,
+                    }
+                    : false,
+                pagination:
+                  project.media.length > 1
+                    ? {
+                      el: `.project-swiper-${index} .swiper-pagination`,
+                      clickable: true,
+                    }
+                    : false,
+              });
+            }
           });
-
-          projectContainer.appendChild(projectsGrid);
-
-          // Initialize Swiper for each project
-          setTimeout(() => {
-            projects[category].forEach((project, index) => {
-              if (project.media && project.media.length > 0) {
-                new Swiper(`.project-swiper-${index}`, {
-                  loop: project.media.length > 1,
-                  autoplay:
-                    project.media.length > 1
-                      ? {
-                          delay: 4000,
-                          disableOnInteraction: false,
-                        }
-                      : false,
-                  navigation:
-                    project.media.length > 1
-                      ? {
-                          nextEl: `.project-swiper-${index} .swiper-button-next`,
-                          prevEl: `.project-swiper-${index} .swiper-button-prev`,
-                        }
-                      : false,
-                  pagination:
-                    project.media.length > 1
-                      ? {
-                          el: `.project-swiper-${index} .swiper-pagination`,
-                          clickable: true,
-                        }
-                      : false,
-                });
-              }
-            });
-          }, 100);
-        }
+        }, 100);
       }
+    }
 
-      // Load all projects on page load
-      document.addEventListener("DOMContentLoaded", function () {
-        loadProjects("website");
-        loadProjects("mobile");
-        loadProjects("cpp");
-        loadProjects("csharp");
+    document.addEventListener("DOMContentLoaded", function () {
+      // Load projects for all categories
+      Object.keys(projects).forEach(category => loadProjects(category));
 
-        // Set website as default active
-        document.querySelector(".category-btn").classList.add("active");
-      });
-    </script>
-  </body>
+      // Show all projects by default
+      setTimeout(() => {
+        showAllProjects();
+      }, 200);
+    });
+
+  </script>
+  <script src="projects.js"></script>
+</head>
+
+<body
+  class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-800 dark:text-gray-200">
+  <!--  Header  -->
+  <header class="fixed w-full top-0 glass-effect z-50 border-b border-white/20">
+    <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <div class="flex gap-8">
+        <h1 class="text-xl font-bold gradient-text">
+          <a href="index.html#home" class="flex items-center gap-2">
+            <i class="fas fa-code"></i>Surafel Zewdu
+          </a>
+        </h1>
+        <ul class="hidden md:flex space-x-6 pt-1">
+          <li>
+            <a href="index.html#experience" class="hover:text-primary transition-colors flex items-center gap-2">
+              <i class="fas fa-briefcase"></i>Experience
+            </a>
+          </li>
+          <li>
+            <a href="index.html#skills" class="hover:text-primary transition-colors flex items-center gap-2">
+              <i class="fas fa-cogs"></i>Skills
+            </a>
+          </li>
+          <li>
+            <a href="index.html#contact" class="hover:text-primary transition-colors flex items-center gap-2">
+              <i class="fas fa-envelope"></i>Contact
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="flex items-center gap-6">
+        <ul class="hidden md:flex space-x-6">
+          <li>
+            <a href="projects.html"
+              class="inline-block bg-gradient-to-r from-primary to-secondary text-white px-6 py-2 rounded-full hover:from-secondary hover:to-accent transition-all duration-300 glow-effect">
+              <i class="fas fa-project-diagram mr-2"></i>Projects
+            </a>
+          </li>
+        </ul>
+        <button onclick="toggleDarkMode()"
+          class="p-2 rounded-lg glass-effect hover:bg-white/20 dark:hover:bg-black/20 transition-all">
+          <i class="fas fa-moon dark:hidden text-yellow-500"></i>
+          <i class="fas fa-sun hidden dark:block text-yellow-400"></i>
+        </button>
+        <!-- Mobile Menu Button -->
+        <button class="md:hidden glass-effect p-2 rounded-lg"
+          onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </nav>
+    <!-- Enhanced Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden px-4 py-2 glass-effect border-t border-white/20">
+      <ul class="space-y-2">
+        <li>
+          <a href="index.html#home" class="block py-2 hover:text-primary transition-colors flex items-center gap-2"><i
+              class="fas fa-home"></i>Home</a>
+        </li>
+        <li>
+          <a href="projects.html" class="block py-2 hover:text-primary transition-colors flex items-center gap-2"><i
+              class="fas fa-project-diagram"></i>Projects</a>
+        </li>
+        <li>
+          <a href="index.html#experience"
+            class="block py-2 hover:text-primary transition-colors flex items-center gap-2"><i
+              class="fas fa-briefcase"></i>Experience</a>
+        </li>
+        <li>
+          <a href="index.html#skills" class="block py-2 hover:text-primary transition-colors flex items-center gap-2"><i
+              class="fas fa-cogs"></i>Skills</a>
+        </li>
+        <li>
+          <a href="index.html#contact"
+            class="block py-2 hover:text-primary transition-colors flex items-center gap-2"><i
+              class="fas fa-envelope"></i>Contact</a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Enhanced Hero Section -->
+  <section class="pt-32 pb-16 container mx-auto px-4 text-center">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-5xl font-bold mb-6 gradient-text float-animation">
+        <i class="fas fa-rocket mr-4"></i>My Projects
+      </h1>
+      <p class="text-xl text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
+        Explore my diverse portfolio of web applications, mobile apps, and
+        software solutions. Each project represents a unique challenge solved
+        with creativity and technical expertise.
+      </p>
+
+      <!-- Enhanced Stats -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+        <div class="glass-effect p-6 rounded-xl hover-lift">
+          <div class="text-3xl font-bold gradient-text mb-2">15+</div>
+          <div class="text-sm text-gray-600 dark:text-gray-400">
+            Total Projects
+          </div>
+        </div>
+        <div class="glass-effect p-6 rounded-xl hover-lift">
+          <div class="text-3xl font-bold gradient-text mb-2">5</div>
+          <div class="text-sm text-gray-600 dark:text-gray-400">Web Apps</div>
+        </div>
+        <div class="glass-effect p-6 rounded-xl hover-lift">
+          <div class="text-3xl font-bold gradient-text mb-2">6</div>
+          <div class="text-sm text-gray-600 dark:text-gray-400">
+            Mobile Apps
+          </div>
+        </div>
+        <div class="glass-effect p-6 rounded-xl hover-lift">
+          <div class="text-3xl font-bold gradient-text mb-2">8+</div>
+          <div class="text-sm text-gray-600 dark:text-gray-400">
+            Technologies
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Enhanced Project Categories -->
+  <section class="pb-12 container mx-auto px-4">
+    <div class="flex flex-wrap justify-center gap-4 mb-12">
+      <button onclick="showProjects('all')"
+        class="category-btn flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white rounded-full hover:from-secondary hover:to-accent transition-all duration-300 text-lg font-semibold">
+        <i class="fas fa-globe text-xl"></i>
+        <span>All Projects</span>
+        <span class="bg-white/20 px-2 py-1 rounded-full text-sm">15+</span>
+      </button>
+      <button onclick="showProjects('website')"
+        class="category-btn flex items-center gap-3 px-8 py-4 glass-effect rounded-full hover:bg-white/20 dark:hover:bg-black/20 transition-all duration-300 text-lg font-semibold">
+        <i class="fas fa-globe text-xl text-primary"></i>
+        <span>Web Applications</span>
+        <span class="bg-primary/20 px-2 py-1 rounded-full text-sm">5</span>
+      </button>
+      <button onclick="showProjects('mobile')"
+        class="category-btn flex items-center gap-3 px-8 py-4 glass-effect rounded-full hover:bg-white/20 dark:hover:bg-black/20 transition-all duration-300 text-lg font-semibold">
+        <i class="fas fa-mobile-alt text-xl text-secondary"></i>
+        <span>Mobile Apps</span>
+        <span class="bg-secondary/20 px-2 py-1 rounded-full text-sm">6</span>
+      </button>
+      <button onclick="showProjects('csharp')"
+        class="category-btn flex items-center gap-3 px-8 py-4 glass-effect rounded-full hover:bg-white/20 dark:hover:bg-black/20 transition-all duration-300 text-lg font-semibold">
+        <i class="fab fa-microsoft text-xl text-accent"></i>
+        <span>Desktop Apps</span>
+        <span class="bg-accent/20 px-2 py-1 rounded-full text-sm">1</span>
+      </button>
+      <button onclick="showProjects('cpp')"
+        class="category-btn flex items-center gap-3 px-8 py-4 glass-effect rounded-full hover:bg-white/20 dark:hover:bg-black/20 transition-all duration-300 text-lg font-semibold">
+        <i class="fas fa-gamepad text-xl text-primary"></i>
+        <span>Games & More</span>
+        <span class="bg-primary/20 px-2 py-1 rounded-full text-sm">1</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- Enhanced Project Lists -->
+  <section class="container mx-auto px-4 pb-16">
+    <!-- Website Projects -->
+    <div id="website-projects" class="project-category">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-bold mb-4 gradient-text">
+          <i class="fas fa-globe mr-3"></i>Web Applications
+        </h2>
+        <p class="text-lg text-gray-600 dark:text-gray-400">
+          Full-stack web applications built with modern technologies
+        </p>
+      </div>
+      <!-- Projects will be dynamically inserted here -->
+    </div>
+
+    <!-- Mobile Projects -->
+    <div id="mobile-projects" class="project-category hidden">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-bold mb-4 gradient-text">
+          <i class="fas fa-mobile-alt mr-3"></i>Mobile Applications
+        </h2>
+        <p class="text-lg text-gray-600 dark:text-gray-400">
+          Cross-platform mobile apps built with Flutter and React Native
+        </p>
+      </div>
+      <!-- Projects will be dynamically inserted here -->
+    </div>
+
+    <!-- C# Projects -->
+    <div id="csharp-projects" class="project-category hidden">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-bold mb-4 gradient-text">
+          <i class="fab fa-microsoft mr-3"></i>Desktop Applications
+        </h2>
+        <p class="text-lg text-gray-600 dark:text-gray-400">
+          Windows desktop applications built with C# and .NET
+        </p>
+      </div>
+      <!-- Projects will be dynamically inserted here -->
+    </div>
+
+    <!-- Games Projects -->
+    <div id="cpp-projects" class="project-category hidden">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-bold mb-4 gradient-text">
+          <i class="fas fa-gamepad mr-3"></i>Games & Interactive Projects
+        </h2>
+        <p class="text-lg text-gray-600 dark:text-gray-400">
+          Interactive games and creative projects
+        </p>
+      </div>
+      <!-- Projects will be dynamically inserted here -->
+    </div>
+  </section>
+
+  <!-- Full Screen Modal -->
+  <div id="fullscreen-modal" class="fullscreen-modal">
+    <div class="modal-close" onclick="closeFullscreen()">
+      <i class="fas fa-times"></i>
+    </div>
+    <div class="swiper fullscreen-swiper">
+      <div class="swiper-wrapper"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+
+  <!--  Footer -->
+  <footer class="py-12 bg-gradient-to-r from-gray-900 to-black text-white">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8 mb-8">
+        <!-- Brand -->
+        <div class="md:col-span-2">
+          <h3 class="text-2xl font-bold gradient-text mb-4">
+            <i class="fas fa-code mr-2"></i>Surafel Zewdu
+          </h3>
+          <p class="text-gray-400 mb-4">
+            Passionate full-stack developer creating innovative solutions that
+            make a difference. Let's build something amazing together!
+          </p>
+          <div class="flex gap-4">
+            <a href="https://github.com/surafel-47" target="_blank"
+              class="social-icon glass-effect p-3 rounded-full hover:bg-white/10">
+              <i class="fab fa-github text-xl"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/surafel-zewdu-0ba88b242/" target="_blank"
+              class="social-icon glass-effect p-3 rounded-full hover:bg-white/10">
+              <i class="fab fa-linkedin text-xl"></i>
+            </a>
+            <a href="https://t.me/Zufan47" target="_blank"
+              class="social-icon glass-effect p-3 rounded-full hover:bg-white/10">
+              <i class="fab fa-telegram text-xl"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4 class="text-lg font-semibold mb-4 text-primary">Quick Links</h4>
+          <ul class="space-y-2">
+            <li>
+              <a href="index.html#home"
+                class="text-gray-400 hover:text-white transition-colors flex items-center gap-2"><i
+                  class="fas fa-home"></i>Home</a>
+            </li>
+            <li>
+              <a href="index.html#experience"
+                class="text-gray-400 hover:text-white transition-colors flex items-center gap-2"><i
+                  class="fas fa-briefcase"></i>Experience</a>
+            </li>
+            <li>
+              <a href="index.html#skills"
+                class="text-gray-400 hover:text-white transition-colors flex items-center gap-2"><i
+                  class="fas fa-cogs"></i>Skills</a>
+            </li>
+            <li>
+              <a href="projects.html"
+                class="text-gray-400 hover:text-white transition-colors flex items-center gap-2"><i
+                  class="fas fa-project-diagram"></i>Projects</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Project Categories -->
+        <div>
+          <h4 class="text-lg font-semibold mb-4 text-secondary">
+            Project Types
+          </h4>
+          <ul class="space-y-2 text-gray-400">
+            <li class="flex items-center gap-2">
+              <i class="fas fa-globe"></i>Web Applications
+            </li>
+            <li class="flex items-center gap-2">
+              <i class="fas fa-mobile-alt"></i>Mobile Apps
+            </li>
+            <li class="flex items-center gap-2">
+              <i class="fab fa-microsoft"></i>Desktop Apps
+            </li>
+            <li class="flex items-center gap-2">
+              <i class="fas fa-gamepad"></i>Games & Interactive
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <p class="text-gray-400 mb-4 md:mb-0">
+          &copy; <span id="current-year"></span> Surafel Zewdu. Crafted with
+          <i class="fas fa-heart text-red-500"></i> and lots of ☕
+        </p>
+        <div class="flex items-center gap-4 text-gray-400">
+          <span class="flex items-center gap-2">
+            <i class="fas fa-map-marker-alt"></i>Addis Ababa, Ethiopia
+          </span>
+          <span class="flex items-center gap-2">
+            <i class="fas fa-clock"></i>Available for freelance
+          </span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      document.getElementById("current-year").textContent =
+        new Date().getFullYear();
+    });
+  </script>
+
+</body>
+
 </html>
